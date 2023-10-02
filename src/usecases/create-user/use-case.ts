@@ -1,4 +1,4 @@
-import { Repository } from '../../repository/port/repository'
+import { Repository } from '../../repository/port/user-repository'
 import { CreateUserRequest } from './domain/create-user-request'
 import { CreateUserError } from './errors/create-user-error'
 import { CreateUserResponse } from './domain/create-user-response'
@@ -21,11 +21,11 @@ export class CreateUserUseCase implements UseCase<CreateUserResponse> {
         name: payload.name,
         password: hashedPassword,
         email: payload.email,
-        cpf: payload.cpf
+        username: payload.username
       })
 
       if (user) {
-        return { isSuccess: true, data: { email: user.email, cpf: user.cpf } }
+        return { isSuccess: true, data: { email: user.email, username: user.username } }
       } else {
         return {
           isSuccess: false,
