@@ -20,31 +20,25 @@ export class LoginUseCase implements UseCase<UserLoginResponse> {
     let userFound = null
     userFound = await this.userRepository.findToLogin(userData.email)
 
-    console.log('passei 1')
     if (!userFound) {
       return { isSuccess: false, error: new LoginEmailError() }
     }
-    console.log('passei 2')
 
     const checkPassword = this.encryptor.compare(
       userData.password,
       userFound.password
     )
-    console.log('passei 3')
 
     if (!checkPassword) {
       return { isSuccess: false, error: new LoginPasswordError() }
     }
-    console.log('passei 4')
 
-    console.log('env secret', process.env.SECRET_JWT)
     const timeExpire = '600s'
     const token = this.createToken.createToken(
       { username: userFound.username, email: userFound.email, name: userFound.name },
       process.env.SECRET_JWT,
       { expiresIn: timeExpire }
     )
-    console.log('passei 5')
 
     return {
       isSuccess: true,
