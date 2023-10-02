@@ -3,12 +3,13 @@ import {
     CreateDateColumn,
     Entity,
     PrimaryGeneratedColumn,
+    PrimaryColumn,
     UpdateDateColumn
   } from 'typeorm'
   
   @Entity()
   export class User {  
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     username: string
 
     @Column({ type: 'timestamptz' })
