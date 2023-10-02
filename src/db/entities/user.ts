@@ -7,10 +7,10 @@ import {
   } from 'typeorm'
   
   @Entity()
-  export class User {
-    @PrimaryGeneratedColumn('uuid')
-    id?: string
-  
+  export class User {  
+    @PrimaryGeneratedColumn()
+    username: string
+
     @Column({ type: 'timestamptz' })
     @CreateDateColumn()
     createdAt?: Date
@@ -19,15 +19,21 @@ import {
     @UpdateDateColumn()
     updatedAt?: Date
   
-    @Column({ nullable: true, unique: true })
+    @Column({ unique: true })
     email: string
   
     @Column()
     name: string
   
-    @Column({ nullable: true, unique: true })
-    cpf: string
-  
     @Column({ select: false })
     password: string
+
+    @Column({ default: 0 })
+    qtBooster: number
+
+    @Column({ default: 0 })
+    qtEnergy: number
+
+    @Column({ default: 0 })
+    qtCube: number
   }

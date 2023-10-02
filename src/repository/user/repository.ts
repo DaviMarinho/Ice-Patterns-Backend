@@ -1,11 +1,11 @@
 import { dataSource } from '../../db/config'
 import { User } from '../../db/entities/user'
-import { Repository } from '../port/repository'
+import { Repository } from '../port/user-repository'
 
 interface options {
   name: string
   email: string
-  cpf: string
+  username: string
   password: string
 }
 class UserRepository implements Repository {
@@ -15,17 +15,27 @@ class UserRepository implements Repository {
   }
 
   async createUser(params: options): Promise<User | undefined> {
-    const { name, email, cpf, password } = params
+    const { name, email, username, password } = params
 
     const user = this.userRepository.create({
       name,
       email: email !== '' ? email : undefined,
-      cpf,
+      username,
       password
     })
 
     await this.userRepository.save(user)
     return user
+  }
+
+  async findToLogin(email: string): Promise<User> {
+    const userPassword = await this.userRepository.find({
+      where: {
+        email
+      },
+      select: ['password', 'email', 'username', 'name']
+    })
+    return userPassword[0]
   }
 }
 

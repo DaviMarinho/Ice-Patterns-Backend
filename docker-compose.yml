@@ -7,10 +7,8 @@ services:
       - db.env
     volumes:
       - ./data:/var/lib/postgresql/data
-    ports:
-      - '5432:5432'
 
-  user_api:
+  user-api:
     depends_on:
       - db
     build: .
@@ -20,4 +18,4 @@ services:
       - ./:/app
     ports:
       - 4001:4001
-    command: sh -c "yarn && yarn dev"
+    command: sh -c "yarn && yarn migration:run && yarn dev"

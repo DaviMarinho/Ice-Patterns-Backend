@@ -1,13 +1,17 @@
 export type User = {
-    id?: string
-  
+    username: string
+
     name: string
   
     email: string
-  
-    cpf: string
-  
+    
     password: string
+
+    qtBooster: number
+
+    qtEnergy: number
+
+    qtCube: number
   
     createdAt?: Date
   
