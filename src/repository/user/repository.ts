@@ -37,6 +37,17 @@ class UserRepository implements Repository {
     })
     return userPassword[0]
   }
+
+  async findOneByEmail(email: string): Promise<User | undefined> {
+    const user = await this.userRepository.findOneBy({
+      email
+    })
+    if (!user) {
+      return undefined
+    }
+    return user
+  }
+
 }
 
 export default UserRepository

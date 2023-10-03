@@ -8,4 +8,5 @@ export interface Repository {
     password: string
   }): Promise<User | undefined>
   findToLogin(email: string): Promise<User | undefined>
+  findOneByEmail(email: string): Promise<User | undefined>
 }
