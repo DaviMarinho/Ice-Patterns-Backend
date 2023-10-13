@@ -48,6 +48,16 @@ class UserRepository implements Repository {
     return user
   }
 
+  async findOneByUsername(username: string): Promise<User | undefined> {
+    const user = await this.userRepository.findOneBy({
+      username
+    })
+    if (!user) {
+      return undefined
+    }
+    return user
+  }
+
 }
 
 export default UserRepository
