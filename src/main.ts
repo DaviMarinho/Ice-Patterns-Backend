@@ -2,6 +2,7 @@ import 'reflect-metadata'
 import express, { json } from 'express'
 import { dataSource } from './db/config'
 import routes from './routes'
+import cors from 'cors'
 
 dataSource
   .initialize()
@@ -16,6 +17,7 @@ const port = 4001
 
 const app = express()
 
+app.use(cors())
 app.use(json())
 
 app.use('/icepatterns', routes)
