@@ -1,3 +1,4 @@
+import { UpdateResult } from 'typeorm'
 import { dataSource } from '../../db/config'
 import { User } from '../../db/entities/user'
 import { Repository } from '../port/user-repository'
@@ -57,6 +58,19 @@ class UserRepository implements Repository {
     }
     return user
   }
+
+  async updateUserItemQuantity(username: string, qtCube: number, qtEnergy: number, qtBooster: number): Promise<UpdateResult | undefined> {
+    const result = await this.userRepository.update({
+      username,
+    }, {
+      qtCube,
+      qtEnergy,
+      qtBooster
+    })
+
+    return result
+  }
+
 
 }
 

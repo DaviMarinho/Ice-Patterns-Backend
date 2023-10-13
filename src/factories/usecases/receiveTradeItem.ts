@@ -5,5 +5,5 @@ import { ReceiveTradeItemUseCase } from '../../usecases/receiveTradeItem/use-cas
 export const makeReceiveTradeItem = () => {
   const encryptor = new BcryptAdapter()
   const userRepository = new UserRepository()
-  return new ReceiveTradeItemUseCase(encryptor, userRepository)
+  return new ReceiveTradeItemUseCase(userRepository)
 }
