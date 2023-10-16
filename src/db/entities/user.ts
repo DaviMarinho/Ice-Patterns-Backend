@@ -4,10 +4,9 @@ import {
     Entity,
     PrimaryColumn,
     UpdateDateColumn,
-    ManyToMany,
-    JoinTable
+    OneToMany
   } from 'typeorm'
-  import { Achievement } from "./achievement"
+  import { UserAchievement } from './userAchievement'
 
   @Entity()
   export class User {  
@@ -40,9 +39,6 @@ import {
     @Column({ default: 0 })
     qtCube: number
 
-    @ManyToMany(() => Achievement, {
-      cascade: true
-    })
-    @JoinTable()
-    achievements: Achievement[]
+    @OneToMany(() => UserAchievement, userAchievement => userAchievement.user)
+    public userAchievements: UserAchievement[];
   }

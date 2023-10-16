@@ -18,6 +18,4 @@ export type User = {
     createdAt?: Date
   
     updatedAt?: Date
-
-    achievements: Achievement[]
   }

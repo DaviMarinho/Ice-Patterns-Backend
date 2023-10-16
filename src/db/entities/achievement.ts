@@ -4,10 +4,10 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
-    ManyToMany,
-    JoinTable
+    OneToMany
   } from 'typeorm'
   import { User } from "./user"
+import { UserAchievement } from './userAchievement'
   
   @Entity()
   export class Achievement {  
@@ -28,8 +28,6 @@ import {
     @Column()
     description: string
 
-    @ManyToMany(() => User, {
-      cascade: true
-    })
-    users: User[]
+    @OneToMany(() => UserAchievement, userAchievement => userAchievement.achievement)
+    public userAchievements: UserAchievement[];
   }
