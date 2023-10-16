@@ -1,3 +1,5 @@
+import { Achievement } from "./achievement"
+
 export type User = {
     username: string
 
@@ -16,4 +18,6 @@ export type User = {
     createdAt?: Date
   
     updatedAt?: Date
+
+    achievements: Achievement[]
   }

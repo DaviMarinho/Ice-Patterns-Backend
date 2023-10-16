@@ -2,11 +2,13 @@ import {
     Column,
     CreateDateColumn,
     Entity,
-    PrimaryGeneratedColumn,
     PrimaryColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    ManyToMany,
+    JoinTable
   } from 'typeorm'
-  
+  import { Achievement } from "./achievement"
+
   @Entity()
   export class User {  
     @PrimaryColumn()
@@ -37,4 +39,10 @@ import {
 
     @Column({ default: 0 })
     qtCube: number
+
+    @ManyToMany(() => Achievement, {
+      cascade: true
+    })
+    @JoinTable()
+    achievements: Achievement[]
   }

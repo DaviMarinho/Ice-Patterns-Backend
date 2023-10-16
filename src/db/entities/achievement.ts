@@ -3,11 +3,14 @@ import {
     CreateDateColumn,
     Entity,
     PrimaryGeneratedColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    ManyToMany,
+    JoinTable
   } from 'typeorm'
+  import { User } from "./user"
   
   @Entity()
-  export class User {  
+  export class Achievement {  
     @PrimaryGeneratedColumn('uuid')
     id?: string
 
@@ -24,4 +27,9 @@ import {
   
     @Column()
     description: string
+
+    @ManyToMany(() => User, {
+      cascade: true
+    })
+    users: User[]
   }

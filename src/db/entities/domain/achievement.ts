@@ -1,3 +1,5 @@
+import { User } from "./user"
+
 export type Achievement = {
     id: string
 
@@ -8,4 +10,6 @@ export type Achievement = {
     createdAt?: Date
   
     updatedAt?: Date
+
+    users: User[]
   }
