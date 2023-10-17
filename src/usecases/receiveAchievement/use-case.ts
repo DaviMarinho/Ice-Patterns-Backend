@@ -1,18 +1,18 @@
 import { Repository } from '../../repository/port/user-repository'
 import { UserAchievementsRepository } from '../../repository/port/userAchievement-repository'
+import { AchievementsRepository } from '../../repository/port/achievement-repository'
 import { ReceiveAchievementRequest } from './domain/receiveAchievement-request'
 import { ReceiveAchievementResponse } from '../receiveAchievement/domain/receiveAchievement-response'
 import { GetUserError } from '../get-user/errors/get-user-error'
 import { GetAchievementError } from './errors/getAchievement-error'
 import { ReceiveAchievementError } from './errors/receiveAchievement-error'
 import { UseCase, UseCaseReponse } from '../domain/use-case'
-import { AchievementsRepository } from '../../repository/port/achievement-repository'
 
 export class ReceiveAchievementUseCase implements UseCase<ReceiveAchievementResponse> {
   constructor(
     private userRepository: Repository,
-    private userAchievementRepository: UserAchievementsRepository,
-    private achievementRepository: AchievementsRepository
+    private achievementRepository: AchievementsRepository,
+    private userAchievementRepository: UserAchievementsRepository
   ) {}
 
   async execute(
