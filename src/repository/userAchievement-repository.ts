@@ -20,6 +20,16 @@ class UserAchievementRepository implements UserAchievementsRepository {
     await this.userAchievementRepository.save(userAchievement)
     return userAchievement
   }
+
+  async findAchievementsByUsername(userUsername: string): Promise<UserAchievement[] | undefined> {
+    const userAchievements = await this.userAchievementRepository.findBy({
+      userUsername
+    })
+    if (!userAchievements) {
+      return undefined
+    }
+    return userAchievements
+  }
 }
 
 export default UserAchievementRepository
