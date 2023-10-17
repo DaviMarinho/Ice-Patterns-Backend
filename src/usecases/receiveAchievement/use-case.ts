@@ -1,14 +1,18 @@
 import { Repository } from '../../repository/port/user-repository'
+import { UserAchievementsRepository } from '../../repository/port/userAchievement-repository'
 import { ReceiveAchievementRequest } from './domain/receiveAchievement-request'
 import { ReceiveAchievementResponse } from '../receiveAchievement/domain/receiveAchievement-response'
 import { GetUserError } from '../get-user/errors/get-user-error'
 import { GetAchievementError } from './errors/getAchievement-error'
 import { ReceiveAchievementError } from './errors/receiveAchievement-error'
 import { UseCase, UseCaseReponse } from '../domain/use-case'
+import { AchievementsRepository } from '../../repository/port/achievement-repository'
 
 export class ReceiveAchievementUseCase implements UseCase<ReceiveAchievementResponse> {
   constructor(
-    private userRepository: Repository
+    private userRepository: Repository,
+    private userAchievementRepository: UserAchievementsRepository,
+    private achievementRepository: AchievementsRepository
   ) {}
 
   async execute(
@@ -16,6 +20,7 @@ export class ReceiveAchievementUseCase implements UseCase<ReceiveAchievementResp
   ): Promise<UseCaseReponse<ReceiveAchievementResponse>> {
     try {
       let userFound = null
+      let achievementFound = null
 
       if (payload.username) {
         userFound = await this.userRepository.findOneByUsername(payload.username)
@@ -35,9 +40,12 @@ export class ReceiveAchievementUseCase implements UseCase<ReceiveAchievementResp
             }
         }    
 
-        const userAchievement = await this.achievementRepository.receiveAchievement(
+        let timeNow = Date.now()
+
+        const userAchievement = await this.userAchievementRepository.createUserAchievement(
           payload.username,
-          payload.idAchievement
+          payload.idAchievement,
+          new Date(timeNow)
         )
 
         if (!userAchievement) {
@@ -51,7 +59,8 @@ export class ReceiveAchievementUseCase implements UseCase<ReceiveAchievementResp
             isSuccess: true, 
             body: {
             username: userFound.username,
-            achievementName: achievementFound.name
+            idAchievement: achievementFound?.id,
+            userAchievement
             }
         }
       } else {

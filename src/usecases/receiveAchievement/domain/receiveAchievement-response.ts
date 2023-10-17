@@ -1,4 +1,8 @@
+import { UserAchievement } from "../../../db/entities/domain/userAchievement"
+
 export interface ReceiveAchievementResponse {
-    a: number
+    username: string
+    idAchievement?: string
+    userAchievement: UserAchievement
 }
   
