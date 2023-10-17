@@ -33,6 +33,13 @@ export class ReceiveAchievementUseCase implements UseCase<ReceiveAchievementResp
       if (userFound) {
         if (payload.idAchievement) {
             achievementFound = await this.achievementRepository.findOneById(payload.idAchievement)
+
+            if (!achievementFound) {
+              return {
+                isSuccess: false,
+                error: new GetAchievementError()
+              }
+            }
         } else {
             return {
                 isSuccess: false,
@@ -59,7 +66,7 @@ export class ReceiveAchievementUseCase implements UseCase<ReceiveAchievementResp
             isSuccess: true, 
             body: {
             username: userFound.username,
-            idAchievement: achievementFound?.id,
+            idAchievement: achievementFound.id,
             userAchievement
             }
         }
