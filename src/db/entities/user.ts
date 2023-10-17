@@ -40,5 +40,5 @@ import {
     qtCube: number
 
     @OneToMany(() => UserAchievement, userAchievement => userAchievement.user)
-    public userAchievements: UserAchievement[];
+    public userAchievements?: UserAchievement[];
   }

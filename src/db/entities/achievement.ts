@@ -12,7 +12,7 @@ import { UserAchievement } from './userAchievement'
   @Entity()
   export class Achievement {  
     @PrimaryGeneratedColumn('uuid')
-    id?: string
+    id: string
 
     @Column({ type: 'timestamptz' })
     @CreateDateColumn()
@@ -29,5 +29,5 @@ import { UserAchievement } from './userAchievement'
     description: string
 
     @OneToMany(() => UserAchievement, userAchievement => userAchievement.achievement)
-    public userAchievements: UserAchievement[];
+    public userAchievements?: UserAchievement[];
   }

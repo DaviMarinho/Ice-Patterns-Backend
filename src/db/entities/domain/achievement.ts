@@ -1,4 +1,5 @@
-import { User } from "./user"
+import { UserAchievement } from './userAchievement'
+
 
 export type Achievement = {
     id: string
@@ -11,5 +12,5 @@ export type Achievement = {
   
     updatedAt?: Date
 
-    users: User[]
+    userAchievements?: UserAchievement[];
   }
