@@ -4,11 +4,14 @@ import { CreateUserError } from './errors/create-user-error'
 import { CreateUserResponse } from './domain/create-user-response'
 import { UseCase, UseCaseReponse } from '../domain/use-case'
 import { Encryptor } from '../../adapters/bcrypt-adapter'
+import { InitialSublevelError } from './errors/initialSublevel-error'
+import { SublevelsRepository } from '../../repository/port/sublevel-repository'
 
 export class CreateUserUseCase implements UseCase<CreateUserResponse> {
   constructor(
     private encryptor: Encryptor,
-    private userRepository: Repository
+    private userRepository: Repository,
+    private sublevelRepository: SublevelsRepository,
   ) {}
 
   async execute(
@@ -25,7 +28,30 @@ export class CreateUserUseCase implements UseCase<CreateUserResponse> {
       })
 
       if (user) {
-        return { isSuccess: true, data: { email: user.email, username: user.username } }
+
+        const initialSublevel = await this.sublevelRepository.findOneByNumbers(1, 1)
+
+        if (!initialSublevel) {
+            return {
+              isSuccess: false,
+              error: new InitialSublevelError()
+            }
+          }
+
+        const userWithSublevel = await this.userRepository.updateUserSublevel(
+          payload.username,
+          initialSublevel,
+          0
+        )
+
+        if (!userWithSublevel) {
+          return {
+            isSuccess: false,
+            error: new InitialSublevelError()
+          }
+        }
+
+        return { isSuccess: true, data: { email: user.email, username: user.username, sublevel: initialSublevel } }
       } else {
         return {
           isSuccess: false,

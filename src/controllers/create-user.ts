@@ -1,19 +1,14 @@
+import { CreateUserRequest } from '../usecases/create-user/domain/create-user-request'
+import { CreateUserResponse } from '../usecases/create-user/domain/create-user-response'
 import { CreateUserUseCase } from '../usecases/create-user/use-case'
 import { Controller } from './domain/controller'
 import { HttpResponse, serverError, success } from './helpers/http'
 
-type HttpRequest = {
-  name: string
-  email: string
-  cpf: string
-  password: string
-}
+type HttpRequest = CreateUserRequest
+
 type Model =
   | Error
-  | {
-      email: string
-      cpf: string
-    }
+  | CreateUserResponse
 
 export class CreateUserController extends Controller {
   constructor(private readonly createUser: CreateUserUseCase) {
