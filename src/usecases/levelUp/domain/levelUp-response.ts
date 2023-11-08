@@ -1,3 +1,5 @@
+import { Mission } from "../../../db/entities/domain/mission"
+
 export interface LevelUpResponse {
     username: string
     name: string
@@ -6,5 +8,6 @@ export interface LevelUpResponse {
     qtXpTotal: number
     idSublevel: string
     numSublevel: number
-    numLevel: number
+    numLevel: number,
+    missionsUnlocked?: Mission[]
 }
