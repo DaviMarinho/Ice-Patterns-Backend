@@ -19,9 +19,9 @@ export class UserMission {
     @Column('timestamptz')
     public dateTimeCompleted?: Date
 
-    @ManyToOne(() => User, (user) => user.userMissions)
-    public user: User
+    // @ManyToOne(() => User, (user) => user.userMissions)
+    // public user: User
 
-    @ManyToOne(() => Mission, (mission) => mission.userMissions)
-    public mission: Mission
+    // @ManyToOne(() => Mission, (mission) => mission.userMissions)
+    // public mission: Mission
 }

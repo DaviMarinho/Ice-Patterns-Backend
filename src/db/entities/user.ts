@@ -4,9 +4,11 @@ import {
     Entity,
     PrimaryColumn,
     UpdateDateColumn,
-    OneToMany
+    OneToMany,
+    ManyToOne
   } from 'typeorm'
   import { UserAchievement } from './userAchievement'
+  import { Sublevel } from './sublevel'
 
   @Entity()
   export class User {  
@@ -39,6 +41,15 @@ import {
     @Column({ default: 0 })
     qtCube: number
 
+    @Column({ default: 0 })
+    qtXpOnLevel: number
+
+    @Column({ default: 0 })
+    qtXpTotal: number
+
     @OneToMany(() => UserAchievement, userAchievement => userAchievement.user)
     public userAchievements?: UserAchievement[];
+
+    @ManyToOne(() => Sublevel, sublevel => sublevel.users)
+    public sublevel: Sublevel
   }

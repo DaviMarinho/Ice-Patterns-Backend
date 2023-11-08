@@ -1,3 +1,4 @@
+import { Sublevel } from './sublevel'
 import { UserAchievement } from './userAchievement'
 
 export type User = {
@@ -14,10 +15,16 @@ export type User = {
     qtEnergy: number
 
     qtCube: number
+
+    qtXpOnLevel: number
+    
+    qtXpTotal: number
   
     createdAt?: Date
   
     updatedAt?: Date
 
     userAchievements?: UserAchievement[];
+
+    sublevel: Sublevel;
   }

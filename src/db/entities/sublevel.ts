@@ -7,30 +7,20 @@ import {
     OneToMany
   } from 'typeorm'
   import { User } from "./user"
-// import { UserAchievement } from './userAchievement'
   
   @Entity()
-  export class Mission {  
+  export class Sublevel {  
     @PrimaryGeneratedColumn('uuid')
     id: string
 
     @Column()
+    numSublevel: number
+
+    @Column()
+    numLevel: number
+
+    @Column()
     name: string
-  
-    @Column()
-    description: string
-
-    @Column()
-    rewardBooster: number
-  
-    @Column()
-    rewardEnergy: number
-
-    @Column()
-    rewardCube: number
-
-    @Column()
-    unlocksOnLevel: number
 
     @Column({ type: 'timestamptz' })
     @CreateDateColumn()
@@ -40,7 +30,6 @@ import {
     @UpdateDateColumn()
     updatedAt?: Date
   
-
-    // @OneToMany(() => UserAchievement, userAchievement => userAchievement.achievement)
-    // public userAchievements?: UserAchievement[];
+    @OneToMany(() => User, user => user.sublevel)
+    public users?: User[];
   }
