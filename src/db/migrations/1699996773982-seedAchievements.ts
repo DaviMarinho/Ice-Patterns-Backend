@@ -15,7 +15,7 @@ const achievements = [
   }
 ]
 
-export class seedAchievements1698996773982 implements MigrationInterface {
+export class seedAchievements1699996773982 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     achievements.forEach(async (achievements) => {
       await queryRunner.query(
