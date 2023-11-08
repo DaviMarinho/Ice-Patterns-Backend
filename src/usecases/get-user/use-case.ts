@@ -23,7 +23,10 @@ export class GetUserUseCase implements UseCase<GetUserResponse> {
         }
       }
       if (userFound) {
-        return { isSuccess: true, body: userFound }
+        return { 
+          isSuccess: true,
+          body: userFound
+        }
       } else {
         return {
           isSuccess: false,

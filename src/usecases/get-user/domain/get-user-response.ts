@@ -1,3 +1,5 @@
+import { Sublevel } from "../../../db/entities/domain/sublevel"
+
 export interface GetUserResponse {
     username: string
     name: string
@@ -6,6 +8,9 @@ export interface GetUserResponse {
     qtBooster: number
     qtEnergy: number
     qtCube: number
+    qtXpOnLevel: number
+    qtXpTotal: number
+    sublevel: Sublevel
     createdAt?: Date
     updatedAt?: Date
 }

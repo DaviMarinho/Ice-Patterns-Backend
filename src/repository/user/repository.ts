@@ -1,5 +1,6 @@
 import { UpdateResult } from 'typeorm'
 import { dataSource } from '../../db/config'
+import { Sublevel } from '../../db/entities/sublevel'
 import { User } from '../../db/entities/user'
 import { Repository } from '../port/user-repository'
 
@@ -71,6 +72,16 @@ class UserRepository implements Repository {
     return result
   }
 
+  async updateUserSublevel(username: string, nextSublevel: Sublevel, qtXpOnLevel: number): Promise<UpdateResult | undefined> {
+    const result = await this.userRepository.update({
+      username,
+    }, {
+      sublevel: nextSublevel,
+      qtXpOnLevel
+    })
+
+    return result
+  }
   // async receiveAchievement(username: string, idAchievement: string): Promise<UpdateResult | undefined> {
 
   //   const user = await this.userRepository.findOneBy({
