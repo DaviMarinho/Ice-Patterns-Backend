@@ -3,6 +3,7 @@ import { LevelUpRequest } from './domain/levelUp-request'
 import { LevelUpResponse } from './domain/levelUp-response'
 import { GetUserError } from '../get-user/errors/get-user-error'
 import { LevelUpError } from './errors/levelUp-error'
+import { LevelMaxError } from './errors/levelMax-error'
 import { UseCase, UseCaseReponse } from '../domain/use-case'
 import { SublevelsRepository } from '../../repository/port/sublevel-repository'
 
@@ -30,45 +31,65 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
       if (userFound) {
 
         let numSublevel = userFound.sublevel.numSublevel
-        let nextSublevel = numSublevel + 1
-        let nextSublevelFound = null
-        
-        nextSublevelFound = await this.sublevelRepository.findOneByNumber(nextSublevel)
+        let numLevel = userFound.sublevel.numLevel
 
-        if (!nextSublevelFound) {
+        let nextNumSublevel
+        let nextNumLevel
+
+        if (numLevel == 7 && numSublevel == 4) {
             return {
-              isSuccess: false,
-              error: new LevelUpError()
+                isSuccess: false,
+                error: new LevelMaxError()
+              }
+        } else {
+            if (numSublevel == 4) {
+                nextNumLevel = numLevel + 1
+                nextNumSublevel = 1
+            } else {
+                nextNumSublevel = numSublevel + 1
+                nextNumLevel = numLevel
             }
-          }
-        let qtXpOnLevel = 0
-
-        // update user level
-        const updateResult = await this.userRepository.updateUserSublevel(
-          payload.username,
-          nextSublevelFound,
-          qtXpOnLevel
-        )
-
-        if (!updateResult) {
-          return {
-            isSuccess: false,
-            error: new LevelUpError()
-          }
+    
+            let nextSublevelFound = null
+    
+            nextSublevelFound = await this.sublevelRepository.findOneByNumbers(nextNumSublevel, nextNumLevel)
+    
+            if (!nextSublevelFound) {
+                return {
+                  isSuccess: false,
+                  error: new LevelUpError()
+                }
+              }
+            let qtXpOnLevel = 0
+    
+            // update user level
+            const updateResult = await this.userRepository.updateUserSublevel(
+              payload.username,
+              nextSublevelFound,
+              qtXpOnLevel
+            )
+    
+            if (!updateResult) {
+              return {
+                isSuccess: false,
+                error: new LevelUpError()
+              }
+            }
+    
+            return { 
+              isSuccess: true, 
+              body: {
+                username: userFound.username,
+                name: userFound.name,
+                email: userFound.email,
+                qtXpOnLevel: qtXpOnLevel,
+                qtXpTotal: userFound.qtXpTotal,
+                idSublevel: nextSublevelFound.id,
+                numSublevel: nextSublevelFound.numSublevel
+              }
+            }
         }
 
-        return { 
-          isSuccess: true, 
-          body: {
-            username: userFound.username,
-            name: userFound.name,
-            email: userFound.email,
-            qtXpOnLevel: qtXpOnLevel,
-            qtXpTotal: userFound.qtXpTotal,
-            idSublevel: nextSublevelFound.id,
-            numSublevel: nextSublevelFound.numSublevel
-          }
-        }
       } else {
         return {
           isSuccess: false,

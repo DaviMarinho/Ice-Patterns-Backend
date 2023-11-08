@@ -9,9 +9,10 @@ class SublevelRepository implements SublevelsRepository {
     this.sublevelRepository = dataSource.getRepository(Sublevel)
   }
 
-  async findOneByNumber(numSublevel: number): Promise<Sublevel | undefined> {
+  async findOneByNumbers(numSublevel: number, numLevel: number): Promise<Sublevel | undefined> {
     const sublevel = await this.sublevelRepository.findOneBy({
         numSublevel,
+        numLevel
       })
       if (!sublevel) {
         return undefined
