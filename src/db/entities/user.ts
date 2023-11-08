@@ -9,6 +9,7 @@ import {
   } from 'typeorm'
   import { UserAchievement } from './userAchievement'
   import { Sublevel } from './sublevel'
+  import { UserMission } from './userMission'
 
   @Entity()
   export class User {  
@@ -49,6 +50,9 @@ import {
 
     @OneToMany(() => UserAchievement, userAchievement => userAchievement.user)
     public userAchievements?: UserAchievement[];
+
+    @OneToMany(() => UserMission, userMission => userMission.user)
+    public userMissions?: UserMission[];
 
     @ManyToOne(() => Sublevel, sublevel => sublevel.users)
     public sublevel: Sublevel

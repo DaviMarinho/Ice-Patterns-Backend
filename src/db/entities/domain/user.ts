@@ -1,5 +1,6 @@
 import { Sublevel } from './sublevel'
 import { UserAchievement } from './userAchievement'
+import { UserMission } from './userMission'
 
 export type User = {
     username: string
@@ -25,6 +26,8 @@ export type User = {
     updatedAt?: Date
 
     userAchievements?: UserAchievement[];
+
+    missions?: UserMission[];
 
     sublevel: Sublevel;
   }

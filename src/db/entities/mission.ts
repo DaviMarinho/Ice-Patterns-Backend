@@ -7,7 +7,7 @@ import {
     OneToMany
   } from 'typeorm'
   import { User } from "./user"
-// import { UserAchievement } from './userAchievement'
+import { UserMission } from './userMission'
   
   @Entity()
   export class Mission {  
@@ -30,7 +30,10 @@ import {
     rewardCube: number
 
     @Column()
-    unlocksOnLevel: number
+    rewardXp: number
+
+    @Column()
+    unlocksOnLevel: string
 
     @Column({ type: 'timestamptz' })
     @CreateDateColumn()
@@ -39,8 +42,7 @@ import {
     @Column({ type: 'timestamptz' })
     @UpdateDateColumn()
     updatedAt?: Date
-  
 
-    // @OneToMany(() => UserAchievement, userAchievement => userAchievement.achievement)
-    // public userAchievements?: UserAchievement[];
+    @OneToMany(() => UserMission, userMission => userMission.mission)
+    public userMissions?: UserMission[];
   }

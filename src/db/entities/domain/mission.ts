@@ -1,4 +1,4 @@
-// import { UserAchievement } from './userAchievement'
+import { UserMission } from "./userMission"
 
 
 export type Mission = {
@@ -12,11 +12,15 @@ export type Mission = {
 
     rewardEnergy: number
 
-    unlocksOnLevel: number
+    rewardCube: number
+
+    rewardXp: number
+
+    unlocksOnLevel: string
  
     createdAt?: Date
   
     updatedAt?: Date
 
-    // userAchievements?: UserAchievement[];
+    userMissions?: UserMission[];
   }
