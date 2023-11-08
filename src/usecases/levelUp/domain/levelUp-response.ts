@@ -6,4 +6,5 @@ export interface LevelUpResponse {
     qtXpTotal: number
     idSublevel: string
     numSublevel: number
+    numLevel: number
 }

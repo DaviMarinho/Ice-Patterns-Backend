@@ -41,9 +41,13 @@ class UserRepository implements Repository {
   }
 
   async findOneByEmail(email: string): Promise<User | undefined> {
-    const user = await this.userRepository.findOneBy({
-      email
-    })
+    const user = await this.userRepository.findOne({
+      where: {
+        email: email,
+    },
+    relations: {
+      sublevel: true
+    }})
     if (!user) {
       return undefined
     }
@@ -51,9 +55,13 @@ class UserRepository implements Repository {
   }
 
   async findOneByUsername(username: string): Promise<User | undefined> {
-    const user = await this.userRepository.findOneBy({
-      username
-    })
+    const user = await this.userRepository.findOne({
+      where: {
+        username: username,
+    },
+    relations: {
+      sublevel: true
+    }})
     if (!user) {
       return undefined
     }

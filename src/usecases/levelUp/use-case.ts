@@ -29,7 +29,7 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
         }
       }
       if (userFound) {
-
+        
         let numSublevel = userFound.sublevel.numSublevel
         let numLevel = userFound.sublevel.numLevel
 
@@ -85,7 +85,8 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
                 qtXpOnLevel: qtXpOnLevel,
                 qtXpTotal: userFound.qtXpTotal,
                 idSublevel: nextSublevelFound.id,
-                numSublevel: nextSublevelFound.numSublevel
+                numSublevel: nextSublevelFound.numSublevel,
+                numLevel: nextSublevelFound.numLevel
               }
             }
         }
