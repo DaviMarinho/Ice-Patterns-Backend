@@ -8,7 +8,7 @@ const missions = [
     rewardEnergy: '1',
     rewardCube: '10',
     rewardXp: '5',
-    unlocksOnLevel: '1e1e8f7f-b031-4e1e-8b1d-fd460a0b26e2',
+    unlocksOnLevel: '2',
   },
   {
     name: '4 exercícios sem errar',
@@ -17,7 +17,7 @@ const missions = [
     rewardEnergy: '0',
     rewardCube: '5',
     rewardXp: '5',
-    unlocksOnLevel: '1e1e8f7f-b031-4e1e-8b1d-fd460a0b26e2',
+    unlocksOnLevel: '3',
   },
   {
     name: 'Não perca energias',
@@ -26,7 +26,7 @@ const missions = [
     rewardEnergy: '0',
     rewardCube: '10',
     rewardXp: '10',
-    unlocksOnLevel: '4086d37b-4da5-40a3-915e-bf3b59af15fa',
+    unlocksOnLevel: '3',
   },
   {
     name: '100 xp em 1h',
@@ -35,7 +35,7 @@ const missions = [
     rewardEnergy: '1',
     rewardCube: '20',
     rewardXp: '0',
-    unlocksOnLevel: '6bf861ad-8bba-46a3-9f36-265c246eae11',
+    unlocksOnLevel: '5',
   }
 ]
 

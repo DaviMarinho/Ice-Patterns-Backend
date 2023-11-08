@@ -2,7 +2,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
-    PrimaryGeneratedColumn,
+    PrimaryColumn,
     UpdateDateColumn,
     OneToMany
   } from 'typeorm'
@@ -10,7 +10,7 @@ import {
   
   @Entity()
   export class Sublevel {  
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryColumn()
     id: string
 
     @Column()

@@ -16,7 +16,7 @@ export class UserMission {
     @Column('timestamptz')
     public dateTimeStarted: Date
 
-    @Column('timestamptz')
+    @Column('timestamptz', {nullable: true})
     public dateTimeCompleted?: Date
 
     @ManyToOne(() => User, (user) => user.userMissions)
