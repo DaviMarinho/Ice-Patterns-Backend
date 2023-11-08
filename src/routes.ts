@@ -7,6 +7,7 @@ import { makeReceiveTradeItemController } from './factories/controllers/receiveT
 import { makeReceiveAchievementController } from './factories/controllers/receiveAchievement'
 import { makeGetUserAchievementsController } from './factories/controllers/getUserAchievements'
 import { makeLevelUpController } from './factories/controllers/levelUp'
+import { makeGetUserMissionsController } from './factories/controllers/getUserMissons'
 import { auth } from './middlewares/auth'
 
 const routes = Router()
@@ -21,10 +22,6 @@ routes.post('/receiveAchievement', auth, adaptExpressRoute(makeReceiveAchievemen
 routes.get('/getUserAchievements', auth, adaptExpressRoute(makeGetUserAchievementsController()))
 
 routes.post('/levelUp', auth, adaptExpressRoute(makeLevelUpController()))
-
-// endpoint start mission - TODO? (automaticamente inicia quando desbloqueia missão)
-// routes.post('/getUserMissions', auth, adaptExpressRoute(makeGetUserMissionsController()))
-
-// routes.post('/getUserLevel', auth, adaptExpressRoute(makeGetUserMissionsController()))
+routes.get('/getUserMissions', auth, adaptExpressRoute(makeGetUserMissionsController()))
 
 export default routes

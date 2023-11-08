@@ -21,6 +21,17 @@ class UserMissionRepository implements UserMissionsRepository {
     await this.userMissionRepository.save(userMission)
     return userMission
   }
+
+  async findMissionsByUsername(userUsername: string): Promise<UserMission[] | undefined> {
+    const userMissions = await this.userMissionRepository.findBy({
+      userUsername
+    })
+    if (!userMissions) {
+      return undefined
+    }
+    return userMissions
+  }
+
 }
 
 export default UserMissionRepository
