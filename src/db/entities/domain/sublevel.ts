@@ -1,5 +1,7 @@
 // import { UserAchievement } from './userAchievement'
 
+import { Content } from "./content"
+import { Exercise } from "./exercise"
 import { User } from "./user"
 
 
@@ -18,5 +20,7 @@ export type Sublevel = {
 
     users?: User[]
 
-    // userAchievements?: UserAchievement[];
+    exercises: Exercise[]
+
+    contents: Content[]
   }

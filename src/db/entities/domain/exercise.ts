@@ -1,13 +1,21 @@
+import { Alternative } from "./alternative"
+import { ExerciseType } from "./enum/exerciseType"
+import { Sublevel } from "./sublevel"
+
 export type Exercise = {
     id: string
 
-    tipo: string
+    type: ExerciseType
   
-    enunciado: string
+    question: string
 
-    chaveOrdenacao: number
+    orderKey: number
  
     createdAt?: Date
   
     updatedAt?: Date
+
+    alternatives: Alternative[];
+
+    sublevel: Sublevel;
   }

@@ -4,15 +4,12 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
-    OneToMany,
     ManyToOne
   } from 'typeorm'
-import { Alternative } from './alternative'
-import { ExerciseType } from './domain/enum/exerciseType'
 import { Sublevel } from './sublevel'
   
   @Entity()
-  export class Exercise {  
+  export class Content {  
     @PrimaryGeneratedColumn('uuid')
     id: string
 
@@ -24,18 +21,12 @@ import { Sublevel } from './sublevel'
     @UpdateDateColumn()
     updatedAt?: Date
   
-    @Column({type: 'enum', enum: ExerciseType})
-    type: string
+    @Column()
+    text: string
   
     @Column()
-    question: string
+    position: number
 
-    @Column()
-    orderKey: number
-
-    @OneToMany(() => Alternative, (alternative) => alternative.exercise)
-    alternatives: Alternative[]
-
-    @ManyToOne(() => Sublevel, sublevel => sublevel.exercises)
+    @ManyToOne(() => Sublevel, sublevel => sublevel.contents)
     public sublevel: Sublevel
   }

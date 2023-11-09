@@ -6,6 +6,8 @@ import {
     UpdateDateColumn,
     OneToMany
   } from 'typeorm'
+import { Content } from './content'
+import { Exercise } from './exercise'
   import { User } from "./user"
   
   @Entity()
@@ -32,4 +34,10 @@ import {
   
     @OneToMany(() => User, user => user.sublevel)
     public users?: User[];
+
+    @OneToMany(() => Exercise, exercise => exercise.sublevel)
+    public exercises: Exercise[];
+
+    @OneToMany(() => Content, content => content.sublevel)
+    public contents: Content[];
   }
