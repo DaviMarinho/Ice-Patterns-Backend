@@ -1,6 +1,7 @@
 import { Alternative } from "./alternative"
 import { ExerciseType } from "./enum/exerciseType"
 import { Sublevel } from "./sublevel"
+import { UserExercise } from "./userExercise"
 
 export type Exercise = {
     id: string
@@ -18,4 +19,7 @@ export type Exercise = {
     alternatives: Alternative[];
 
     sublevel: Sublevel;
+
+    userExercises?: UserExercise[];
+
   }

@@ -6,6 +6,7 @@ export class Default1699405509698 implements MigrationInterface {
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(`CREATE TABLE "content" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "text" character varying NOT NULL, "position" integer NOT NULL, "sublevelId" character varying, CONSTRAINT "PK_6a2083913f3647b44f205204e36" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "alternative" ("num" character varying NOT NULL, "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "text" character varying NOT NULL, "isAnswer" boolean NOT NULL, "exerciseId" uuid, CONSTRAINT "PK_2507b82369c87711116c8158a93" PRIMARY KEY ("num"))`);
+        await queryRunner.query(`CREATE TABLE "user_exercise" ("userUsername" character varying NOT NULL, "exerciseId" uuid NOT NULL, "dateTime" TIMESTAMP WITH TIME ZONE NOT NULL, "qtAttempts" integer NOT NULL, "qtRights" integer NOT NULL, CONSTRAINT "PK_77b1196094f438e4748a731b358" PRIMARY KEY ("userUsername", "exerciseId"))`);
         await queryRunner.query(`CREATE TYPE "public"."exercise_type_enum" AS ENUM('0', '1')`);
         await queryRunner.query(`CREATE TABLE "exercise" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "type" "public"."exercise_type_enum" NOT NULL, "question" character varying NOT NULL, "orderKey" integer NOT NULL, "sublevelId" character varying, CONSTRAINT "PK_a0f107e3a2ef2742c1e91d97c14" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "sublevel" ("id" character varying NOT NULL, "numSublevel" integer NOT NULL, "numLevel" integer NOT NULL, "name" character varying NOT NULL, "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), CONSTRAINT "PK_aff07a66e8c53a3beaee172c44b" PRIMARY KEY ("id"))`);
@@ -16,6 +17,8 @@ export class Default1699405509698 implements MigrationInterface {
         await queryRunner.query(`CREATE TABLE "achievement" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "name" character varying NOT NULL, "description" character varying NOT NULL, CONSTRAINT "PK_441339f40e8ce717525a381671e" PRIMARY KEY ("id"))`);
         await queryRunner.query(`ALTER TABLE "content" ADD CONSTRAINT "FK_5fb0c281114efd15b0257b2654e" FOREIGN KEY ("sublevelId") REFERENCES "sublevel"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "alternative" ADD CONSTRAINT "FK_59fd55b128618b9f8cfac984aec" FOREIGN KEY ("exerciseId") REFERENCES "exercise"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE "user_exercise" ADD CONSTRAINT "FK_978e5f4800d446fe423ef32cc38" FOREIGN KEY ("userUsername") REFERENCES "user"("username") ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE "user_exercise" ADD CONSTRAINT "FK_90e40a3c00165b887015120c445" FOREIGN KEY ("exerciseId") REFERENCES "exercise"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "exercise" ADD CONSTRAINT "FK_2767c0a604a225a0401300adc1a" FOREIGN KEY ("sublevelId") REFERENCES "sublevel"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "user_mission" ADD CONSTRAINT "FK_7843b263d50351a1cfb2c85ef32" FOREIGN KEY ("userUsername") REFERENCES "user"("username") ON DELETE NO ACTION ON UPDATE NO ACTION`);
         await queryRunner.query(`ALTER TABLE "user_mission" ADD CONSTRAINT "FK_3c4244c6a407e751dde4cb0aa3d" FOREIGN KEY ("missionId") REFERENCES "mission"("id") ON DELETE NO ACTION ON UPDATE NO ACTION`);
@@ -31,6 +34,8 @@ export class Default1699405509698 implements MigrationInterface {
         await queryRunner.query(`ALTER TABLE "user_mission" DROP CONSTRAINT "FK_3c4244c6a407e751dde4cb0aa3d"`);
         await queryRunner.query(`ALTER TABLE "user_mission" DROP CONSTRAINT "FK_7843b263d50351a1cfb2c85ef32"`);
         await queryRunner.query(`ALTER TABLE "exercise" DROP CONSTRAINT "FK_2767c0a604a225a0401300adc1a"`);
+        await queryRunner.query(`ALTER TABLE "user_exercise" DROP CONSTRAINT "FK_90e40a3c00165b887015120c445"`);
+        await queryRunner.query(`ALTER TABLE "user_exercise" DROP CONSTRAINT "FK_978e5f4800d446fe423ef32cc38"`);
         await queryRunner.query(`ALTER TABLE "alternative" DROP CONSTRAINT "FK_59fd55b128618b9f8cfac984aec"`);
         await queryRunner.query(`ALTER TABLE "content" DROP CONSTRAINT "FK_5fb0c281114efd15b0257b2654e"`);
         await queryRunner.query(`DROP TABLE "achievement"`);
@@ -41,6 +46,7 @@ export class Default1699405509698 implements MigrationInterface {
         await queryRunner.query(`DROP TABLE "sublevel"`);
         await queryRunner.query(`DROP TABLE "exercise"`);
         await queryRunner.query(`DROP TYPE "public"."exercise_type_enum"`);
+        await queryRunner.query(`DROP TABLE "user_exercise"`);
         await queryRunner.query(`DROP TABLE "alternative"`);
         await queryRunner.query(`DROP TABLE "content"`);
     }

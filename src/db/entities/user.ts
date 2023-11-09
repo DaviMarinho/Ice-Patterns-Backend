@@ -10,6 +10,7 @@ import {
   import { UserAchievement } from './userAchievement'
   import { Sublevel } from './sublevel'
   import { UserMission } from './userMission'
+import { UserExercise } from './userExercise'
 
   @Entity()
   export class User {  
@@ -56,4 +57,7 @@ import {
 
     @ManyToOne(() => Sublevel, sublevel => sublevel.users)
     public sublevel: Sublevel
+
+    @OneToMany(() => UserExercise, userExercise => userExercise.user)
+    public userExercises?: UserExercise[];
   }

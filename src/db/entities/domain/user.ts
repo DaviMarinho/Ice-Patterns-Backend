@@ -1,5 +1,6 @@
 import { Sublevel } from './sublevel'
 import { UserAchievement } from './userAchievement'
+import { UserExercise } from './userExercise'
 import { UserMission } from './userMission'
 
 export type User = {
@@ -30,4 +31,6 @@ export type User = {
     missions?: UserMission[];
 
     sublevel: Sublevel;
+
+    userExercises?: UserExercise[];
   }

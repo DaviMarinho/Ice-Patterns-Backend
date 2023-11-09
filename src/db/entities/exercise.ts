@@ -10,6 +10,7 @@ import {
 import { Alternative } from './alternative'
 import { ExerciseType } from './domain/enum/exerciseType'
 import { Sublevel } from './sublevel'
+import { UserExercise } from './userExercise'
   
   @Entity()
   export class Exercise {  
@@ -38,4 +39,7 @@ import { Sublevel } from './sublevel'
 
     @ManyToOne(() => Sublevel, sublevel => sublevel.exercises)
     public sublevel: Sublevel
+
+    @OneToMany(() => UserExercise, userExercise => userExercise.exercise)
+    public userExercises?: UserExercise[];
   }
