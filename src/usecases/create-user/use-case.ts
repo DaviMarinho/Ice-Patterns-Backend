@@ -1,6 +1,7 @@
 import { Repository } from '../../repository/port/user-repository'
 import { CreateUserRequest } from './domain/create-user-request'
 import { CreateUserError } from './errors/create-user-error'
+import { UserAlreadyExistsError } from './errors/user-already-exists-error'
 import { CreateUserResponse } from './domain/create-user-response'
 import { UseCase, UseCaseReponse } from '../domain/use-case'
 import { Encryptor } from '../../adapters/bcrypt-adapter'
@@ -19,6 +20,16 @@ export class CreateUserUseCase implements UseCase<CreateUserResponse> {
   ): Promise<UseCaseReponse<CreateUserResponse>> {
     try {
       const hashedPassword = this.encryptor.encrypt(payload.password)
+
+      const userByUsername = await this.userRepository.findOneByUsername(
+        payload.username
+      )
+      if (userByUsername !== undefined) {
+        return {
+          isSuccess: false,
+          error: new UserAlreadyExistsError('Username já utilizado')
+        }
+      }
 
       const user = await this.userRepository.createUser({
         name: payload.name,
