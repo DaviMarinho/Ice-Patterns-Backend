@@ -13,6 +13,9 @@ import { Exercise } from './exercise'
     @PrimaryColumn('')
     num: string
 
+    @PrimaryColumn()
+    public exerciseId: string
+
     @Column({ type: 'timestamptz' })
     @CreateDateColumn()
     createdAt?: Date
