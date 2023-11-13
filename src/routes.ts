@@ -9,6 +9,7 @@ import { makeGetUserAchievementsController } from './factories/controllers/getUs
 import { makeLevelUpController } from './factories/controllers/levelUp'
 import { makeGetUserMissionsController } from './factories/controllers/getUserMissons'
 import { makeGetSublevelContentsController } from './factories/controllers/getSublevelContents'
+import { makeGetSublevelExercisesController } from './factories/controllers/getSublevelExercises'
 import { auth } from './middlewares/auth'
 
 const routes = Router()
@@ -26,5 +27,6 @@ routes.post('/levelUp', auth, adaptExpressRoute(makeLevelUpController()))
 routes.get('/getUserMissions', auth, adaptExpressRoute(makeGetUserMissionsController()))
 
 routes.get('/getSublevelContents', auth, adaptExpressRoute(makeGetSublevelContentsController()))
+routes.get('/getSublevelExercises', auth, adaptExpressRoute(makeGetSublevelExercisesController()))
 
 export default routes
