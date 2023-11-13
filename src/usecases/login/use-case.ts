@@ -33,7 +33,7 @@ export class LoginUseCase implements UseCase<UserLoginResponse> {
       return { isSuccess: false, error: new LoginPasswordError() }
     }
 
-    const timeExpire = '600s'
+    const timeExpire = '5400s'
     const token = this.createToken.createToken(
       { username: userFound.username, email: userFound.email, name: userFound.name },
       process.env.SECRET_JWT,
