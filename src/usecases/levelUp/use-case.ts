@@ -55,11 +55,11 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
                 nextNumSublevel = numSublevel + 1
                 nextNumLevel = numLevel
             }
-    
+
             let nextSublevelFound = null
     
             nextSublevelFound = await this.sublevelRepository.findOneByNumbers(nextNumSublevel, nextNumLevel)
-    
+
             if (!nextSublevelFound) {
                 return {
                   isSuccess: false,
@@ -110,7 +110,6 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
 
 
             }
-
 
             return { 
               isSuccess: true, 
