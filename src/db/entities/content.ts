@@ -24,6 +24,9 @@ import { Sublevel } from './sublevel'
   
     @Column()
     text: string
+
+    @Column()
+    title: string
   
     @Column()
     position: number

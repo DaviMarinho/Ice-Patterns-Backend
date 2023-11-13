@@ -4,6 +4,8 @@ export type Content = {
     id: string
 
     text: string
+
+    title: string
   
     position: number
  

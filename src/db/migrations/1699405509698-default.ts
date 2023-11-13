@@ -4,7 +4,7 @@ export class Default1699405509698 implements MigrationInterface {
     name = 'Default1699405509698'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.query(`CREATE TABLE "content" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "text" character varying NOT NULL, "position" integer NOT NULL, "sublevelId" character varying, CONSTRAINT "PK_6a2083913f3647b44f205204e36" PRIMARY KEY ("id"))`);
+        await queryRunner.query(`CREATE TABLE "content" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "text" character varying NOT NULL, "title" character varying NOT NULL, "position" integer NOT NULL, "sublevelId" character varying, CONSTRAINT "PK_6a2083913f3647b44f205204e36" PRIMARY KEY ("id"))`);
         await queryRunner.query(`CREATE TABLE "alternative" ("num" character varying NOT NULL, "exerciseId" character varying NOT NULL, "createdAt" TIMESTAMP NOT NULL DEFAULT now(), "updatedAt" TIMESTAMP NOT NULL DEFAULT now(), "text" character varying NOT NULL, "isAnswer" boolean NOT NULL, CONSTRAINT "PK_eef33303e210fefb3d30edf043a" PRIMARY KEY ("num", "exerciseId"))`);
         await queryRunner.query(`CREATE TABLE "user_exercise" ("userUsername" character varying NOT NULL, "exerciseId" character varying NOT NULL, "dateTime" TIMESTAMP WITH TIME ZONE NOT NULL, "qtAttempts" integer NOT NULL, "qtRights" integer NOT NULL, CONSTRAINT "PK_77b1196094f438e4748a731b358" PRIMARY KEY ("userUsername", "exerciseId"))`);
         await queryRunner.query(`CREATE TYPE "public"."exercise_type_enum" AS ENUM('0', '1')`);
