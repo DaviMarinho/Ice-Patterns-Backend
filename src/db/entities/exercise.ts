@@ -2,7 +2,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
-    PrimaryGeneratedColumn,
+    PrimaryColumn,
     UpdateDateColumn,
     OneToMany,
     ManyToOne
@@ -14,7 +14,7 @@ import { UserExercise } from './userExercise'
   
   @Entity()
   export class Exercise {  
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryColumn()
     id: string
 
     @Column({ type: 'timestamptz' })

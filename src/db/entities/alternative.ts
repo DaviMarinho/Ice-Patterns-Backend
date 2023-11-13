@@ -10,7 +10,7 @@ import { Exercise } from './exercise'
   
   @Entity()
   export class Alternative {  
-    @PrimaryColumn('')
+    @PrimaryColumn()
     num: string
 
     @PrimaryColumn()
