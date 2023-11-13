@@ -11,5 +11,5 @@ export type Content = {
   
     updatedAt?: Date
 
-    sublevel: Sublevel;
+    sublevelId: Sublevel;
   }

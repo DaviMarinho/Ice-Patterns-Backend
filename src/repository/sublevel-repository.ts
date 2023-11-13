@@ -20,6 +20,17 @@ class SublevelRepository implements SublevelsRepository {
       return sublevel
   }
 
+  async findOneById(id: string): Promise<Sublevel | undefined> {
+
+    const sublevel = await this.sublevelRepository.findOneBy({
+        id
+      })
+      if (!sublevel) {
+        return undefined
+      }
+      return sublevel
+  }
+
 }
 
 export default SublevelRepository

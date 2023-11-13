@@ -4,7 +4,8 @@ import {
     Entity,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
-    ManyToOne
+    ManyToOne,
+    JoinColumn
   } from 'typeorm'
 import { Sublevel } from './sublevel'
   
@@ -28,5 +29,6 @@ import { Sublevel } from './sublevel'
     position: number
 
     @ManyToOne(() => Sublevel, sublevel => sublevel.contents)
+    @JoinColumn()
     public sublevel: Sublevel
   }
