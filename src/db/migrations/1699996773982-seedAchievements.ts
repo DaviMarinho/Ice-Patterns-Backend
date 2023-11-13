@@ -12,6 +12,14 @@ const achievements = [
   {
     name: 'Fim do Iceberg',
     description: 'Você completou a trilha do Iceberg!'
+  },
+  {
+    name: 'Primeira compra na loja',
+    description: 'Você realizou sua primeira compra na loja!'
+  },
+  {
+    name: '3 subniveis em 24h',
+    description: 'Você completou 3 subníveis dentro de 24 horas!'
   }
 ]
 
