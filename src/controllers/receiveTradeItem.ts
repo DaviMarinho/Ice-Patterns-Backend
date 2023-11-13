@@ -6,6 +6,7 @@ import { ReceiveTradeItemRequest } from '../usecases/receiveTradeItem/domain/rec
 import { ReceiveTradeItemUseCase } from '../usecases/receiveTradeItem/use-case'
 import { Controller } from './domain/controller'
 import { badRequest, HttpResponse, serverError, success } from './helpers/http'
+import { QtError } from '../usecases/receiveTradeItem/errors/qt-error'
 
 type HttpRequest =  ReceiveTradeItemRequest
 
@@ -35,6 +36,11 @@ export class ReceiveTradeItemController extends Controller {
     } else if (
       !response.isSuccess &&
       response.error instanceof OperationError
+    ) {
+      return badRequest(response.error)
+    } else if (
+      !response.isSuccess &&
+      response.error instanceof QtError
     ) {
       return badRequest(response.error)
     } else {

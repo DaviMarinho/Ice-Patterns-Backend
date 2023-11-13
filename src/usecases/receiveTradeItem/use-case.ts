@@ -5,6 +5,7 @@ import { GetUserError } from '../get-user/errors/get-user-error'
 import { UpdateUserItemsError } from './errors/update-user-items-error'
 import { OperationError } from './errors/operation-error'
 import { UseCase, UseCaseReponse } from '../domain/use-case'
+import { QtError } from './errors/qt-error'
 
 export class ReceiveTradeItemUseCase implements UseCase<ReceiveTradeItemResponse> {
   constructor(
@@ -26,6 +27,7 @@ export class ReceiveTradeItemUseCase implements UseCase<ReceiveTradeItemResponse
         }
       }
       if (userFound) {
+
         let newQtCube 
         let newQtEnergy
         let newQtBooster
@@ -34,12 +36,33 @@ export class ReceiveTradeItemUseCase implements UseCase<ReceiveTradeItemResponse
         let diffQtEnergy = 0
         let diffQtBooster = 0
 
-        if(payload?.qtCube)
-          diffQtCube = payload?.qtCube
-        if(payload?.qtEnergy)
+        if(payload?.qtCube) {
+          if ((payload?.qtCube > userFound.qtCube) && !payload.isReceiving) {
+            return {
+              isSuccess: false,
+              error: new QtError('cubos')
+            }
+          }
+          diffQtCube = payload.qtCube
+        }
+        if(payload?.qtEnergy) {
+          if ((payload?.qtEnergy > userFound.qtEnergy) && !payload.isReceiving) {
+            return {
+              isSuccess: false,
+              error: new QtError('energia')
+            }
+          }
           diffQtEnergy = payload.qtEnergy
-        if(payload?.qtBooster)
+        }
+        if(payload?.qtBooster) {
+          if ((payload?.qtBooster > userFound.qtBooster) && !payload.isReceiving) {
+            return {
+              isSuccess: false,
+              error: new QtError('impulsinonador')
+            }
+          }
           diffQtBooster = payload.qtBooster
+        }
       
 
         if (payload.isReceiving != undefined) {
