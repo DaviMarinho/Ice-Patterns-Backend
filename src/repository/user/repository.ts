@@ -80,6 +80,17 @@ class UserRepository implements Repository {
     return result
   }
 
+  async updateUserXpPoints(username: string, qtXpOnLevel: number, qtXpTotal: number): Promise<UpdateResult | undefined> {
+    const result = await this.userRepository.update({
+      username,
+    }, {
+      qtXpOnLevel,
+      qtXpTotal
+    })
+
+    return result
+  }
+
   async updateUserSublevel(username: string, nextSublevel: Sublevel, qtXpOnLevel: number): Promise<UpdateResult | undefined> {
     const result = await this.userRepository.update({
       username,

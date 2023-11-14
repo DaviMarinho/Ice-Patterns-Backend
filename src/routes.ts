@@ -4,6 +4,7 @@ import { makeCreateUserController } from './factories/controllers/create-user'
 import { makeLoginController } from './factories/controllers/login'
 import { makeGetUserController } from './factories/controllers/get-user'
 import { makeReceiveTradeItemController } from './factories/controllers/receiveTradeItem'
+import { makeChangeXpPointsController } from './factories/controllers/changeXpPoints'
 import { makeReceiveAchievementController } from './factories/controllers/receiveAchievement'
 import { makeGetUserAchievementsController } from './factories/controllers/getUserAchievements'
 import { makeLevelUpController } from './factories/controllers/levelUp'
@@ -19,6 +20,7 @@ routes.post('/login', adaptExpressRoute(makeLoginController()))
 routes.get('/get-user', auth, adaptExpressRoute(makeGetUserController()))
 
 routes.post('/receiveTradeItem', auth, adaptExpressRoute(makeReceiveTradeItemController()))
+routes.post('/changeXpPoints', auth, adaptExpressRoute(makeChangeXpPointsController()))
 
 routes.post('/receiveAchievement', auth, adaptExpressRoute(makeReceiveAchievementController()))
 routes.get('/getUserAchievements', auth, adaptExpressRoute(makeGetUserAchievementsController()))
