@@ -1,6 +1,4 @@
-import { UserAchievement } from '../../db/entities/domain/userAchievement'
-import { Achievement } from '../../db/entities/achievement'
-import { User } from '../../db/entities/user'
+import { UserAchievement } from '../../db/entities/userAchievement'
 
 export interface UserAchievementsRepository {
   createUserAchievement(userUsername: string, achievementId: string, dateTime: Date): Promise<UserAchievement | undefined>

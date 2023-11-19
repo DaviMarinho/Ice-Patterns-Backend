@@ -1,4 +1,4 @@
-import { UserMission } from '../../db/entities/domain/userMission'
+import { UserMission } from '../../db/entities/userMission'
 
 
 export interface UserMissionsRepository {
