@@ -1,4 +1,4 @@
-import { UserAchievement } from "../../../db/entities/domain/userAchievement"
+import { UserAchievement } from "../../../db/entities/userAchievement"
 
 export interface ReceiveAchievementResponse {
     username: string

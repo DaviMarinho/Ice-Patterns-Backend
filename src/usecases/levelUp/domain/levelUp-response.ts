@@ -1,4 +1,4 @@
-import { Mission } from "../../../db/entities/domain/mission"
+import { Mission } from "../../../db/entities/mission"
 
 export interface LevelUpResponse {
     username: string

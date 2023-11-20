@@ -8,7 +8,7 @@ import { UseCase, UseCaseReponse } from '../domain/use-case'
 import { SublevelsRepository } from '../../repository/port/sublevel-repository'
 import { MissionsRepository } from '../../repository/port/mission-repository'
 import { UserMissionsRepository } from '../../repository/port/userMission-repository'
-import { UserMission } from '../../db/entities/domain/userMission'
+import { UserMission } from '../../db/entities/userMission'
 import { UnlockMissionError } from './errors/unlockMission-error'
 
 export class LevelUpUseCase implements UseCase<LevelUpResponse> {
