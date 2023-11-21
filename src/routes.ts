@@ -12,6 +12,7 @@ import { makeGetUserMissionsController } from './factories/controllers/getUserMi
 import { makeGetSublevelContentsController } from './factories/controllers/getSublevelContents'
 import { makeGetSublevelExercisesController } from './factories/controllers/getSublevelExercises'
 import { makeGetSublevelsPerLevelController } from './factories/controllers/getSublevelsPerLevel'
+import { makeSolveExercisesController } from './factories/controllers/solveExercises'
 import { auth } from './middlewares/auth'
 
 const routes = Router()
@@ -32,5 +33,7 @@ routes.get('/getUserMissions', auth, adaptExpressRoute(makeGetUserMissionsContro
 routes.get('/getSublevelContents', auth, adaptExpressRoute(makeGetSublevelContentsController()))
 routes.get('/getSublevelExercises', auth, adaptExpressRoute(makeGetSublevelExercisesController()))
 routes.get('/getSublevelsPerLevel', auth, adaptExpressRoute(makeGetSublevelsPerLevelController()))
+
+routes.post('/solveExercises', auth, adaptExpressRoute(makeSolveExercisesController()))
 
 export default routes

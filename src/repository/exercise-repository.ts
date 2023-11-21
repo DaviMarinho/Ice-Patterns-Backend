@@ -21,6 +21,17 @@ class ExerciseRepository implements ExercisesRepository {
     return exercises
   }
 
+  async findOneById(id: string): Promise<Exercise | undefined> {
+
+    const exercise = await this.exerciseRepository.findOneBy({
+        id
+      })
+      if (!exercise) {
+        return undefined
+      }
+      return exercise
+  }
+
 }
 
 export default ExerciseRepository
