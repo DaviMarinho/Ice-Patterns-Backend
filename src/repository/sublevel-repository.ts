@@ -31,6 +31,18 @@ class SublevelRepository implements SublevelsRepository {
       return sublevel
   }
 
+  async findByLevelId(id: number): Promise<Sublevel[] | undefined> {
+
+    const sublevels = await this.sublevelRepository.find({
+      where: {
+        numLevel: id,
+      },
+      })
+      if (!sublevels) {
+        return undefined
+      }
+      return sublevels
+  }
 }
 
 export default SublevelRepository
