@@ -128,6 +128,65 @@ const exercises = [
     orderKey: '2',
     sublevelId: '7'
   },
+
+
+  {
+    id: '19',
+    type: ExerciseType.MULTIPLE_CHOICE,
+    question: 'Suponha que deseja-se criar uma classe com apenas uma instância disponível para todos os clientes, como, por exemplo, um objeto único de base de dados, compartilhado por diferentes partes do programa. Para esse contexto, qual seria a melhor opção de padrão de projeto para ser utilizado, para que não sejam criadas várias instâncias dessa mesma classe?',
+    orderKey: '1',
+    sublevelId: '4'
+  },
+  {
+    id: '20',
+    type: ExerciseType.MULTIPLE_CHOICE,
+    question: 'Os padrões de projeto são separados em categorias. A categoria de padrões estruturais é responsável por:',
+    orderKey: '2',
+    sublevelId: '4'
+  },
+  {
+    id: '21',
+    type: ExerciseType.MULTIPLE_CHOICE,
+    question: 'Assinale a alternativa que apresenta um padrão de projeto classificado como estrutural:',
+    orderKey: '3',
+    sublevelId: '4'
+  },
+  {
+    id: '22',
+    type: ExerciseType.MULTIPLE_CHOICE,
+    question: 'O Singleton é corretamente definido como um padrão de projeto que:',
+    orderKey: '4',
+    sublevelId: '4'
+  },
+
+  {
+    id: '23',
+    type: ExerciseType.MULTIPLE_CHOICE,
+    question: '',
+    orderKey: '1',
+    sublevelId: '8'
+  },
+  {
+    id: '24',
+    type: ExerciseType.MULTIPLE_CHOICE,
+    question: 'Qual alternativa apresenta a sequência correta sobre as afirmativas a seguir, sendo V para verdadeira e F para falsa?<t>Template Method tem por objetivo definir o esqueleto de um algoritmo em uma operação, postergando a definição de alguns passos para subclasses.<t>O padrão de projeto Facade garante que determinada classe só seja instanciada uma única vez, e estabelece um ponto de acesso global a ela.<t>O padrão de projeto Singleton fornece um ponto por meio do qual um objeto controla o acesso a outro e as mudanças ao objeto instanciado acontecem no momento de execução ou interrupção.<t>O padrão Adapter converte a interface de uma classe em outra interface, permitindo objetos com interfaces incompatíveis colaborarem entre si.',
+    orderKey: '2',
+    sublevelId: '8'
+  },
+  {
+    id: '25',
+    type: ExerciseType.MULTIPLE_CHOICE,
+    question: 'Considerando os padrões Adapter e Facade, assinale a alternativa INCORRETA:',
+    orderKey: '3',
+    sublevelId: '8'
+  },
+  {
+    id: '26',
+    type: ExerciseType.MULTIPLE_CHOICE,
+    question: 'Nos padrões de projeto, são exemplos de padrões criacionais, de padrões estruturais e de padrões comportamentais, respectivamente:',
+    orderKey: '4',
+    sublevelId: '8'
+  },
 ]
 
 export class seedExercises1699996988982 implements MigrationInterface {

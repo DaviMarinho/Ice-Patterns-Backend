@@ -320,6 +320,187 @@ const alternatives = [
     text: 'verificar se João possui acesso ao código da classe de análise de dados, e se a mesma possui muitas dependências existentes',
     isAnswer: false
   },
+
+  {
+    num: '1',
+    exerciseId: '19',
+    text: 'Facade',
+    isAnswer: false
+  },
+  {
+    num: '2',
+    exerciseId: '19',
+    text: 'Singleton',
+    isAnswer: true
+  },
+  {
+    num: '3',
+    exerciseId: '19',
+    text: 'Template Method',
+    isAnswer: false
+  },
+  {
+    num: '4',
+    exerciseId: '19',
+    text: 'Decorator',
+    isAnswer: false
+  },
+  {
+    num: '1',
+    exerciseId: '20',
+    text: 'fornecer maneiras eficientes de criar objetos',
+    isAnswer: false
+  },
+  {
+    num: '2',
+    exerciseId: '20',
+    text: 'descrever como os objetos são colocados juntos',
+    isAnswer: true
+  },
+  {
+    num: '3',
+    exerciseId: '20',
+    text: 'distribuir responsabilidades entre os objetos',
+    isAnswer: false
+  },
+  {
+    num: '1',
+    exerciseId: '21',
+    text: 'Template Method',
+    isAnswer: false
+  },
+  {
+    num: '2',
+    exerciseId: '21',
+    text: 'Singleton',
+    isAnswer: false
+  },
+  {
+    num: '3',
+    exerciseId: '21',
+    text: 'Factory Method',
+    isAnswer: false
+  },
+  {
+    num: '4',
+    exerciseId: '21',
+    text: 'Facade',
+    isAnswer: true
+  },
+  {
+    num: '1',
+    exerciseId: '22',
+    text: 'garante que apenas uma instância de uma classe seja criada e fornece um ponto global de acesso a essa instância',
+    isAnswer: true
+  },
+  {
+    num: '2',
+    exerciseId: '22',
+    text: 'permite a criação de múltiplas instâncias de uma classe',
+    isAnswer: false
+  },
+  {
+    num: '3',
+    exerciseId: '22',
+    text: 'facilita a comunicação entre objetos de diferentes classes',
+    isAnswer: false
+  },
+  {
+    num: '4',
+    exerciseId: '22',
+    text: 'facilita a criação de herança múltipla em linguagens de programação que não a suportam nativamente',
+    isAnswer: false
+  },
+  {
+    num: '1',
+    exerciseId: '23',
+    text: 'Singleton',
+    isAnswer: true
+  },
+  {
+    num: '2',
+    exerciseId: '23',
+    text: 'Facade',
+    isAnswer: false
+  },
+  {
+    num: '3',
+    exerciseId: '23',
+    text: 'Template Method',
+    isAnswer: false
+  },
+  {
+    num: '4',
+    exerciseId: '23',
+    text: 'Factory Method',
+    isAnswer: false
+  },
+  {
+    num: '1',
+    exerciseId: '24',
+    text: 'F - F - V - F',
+    isAnswer: false
+  },
+  {
+    num: '2',
+    exerciseId: '24',
+    text: 'V - F - F - V',
+    isAnswer: true
+  },
+  {
+    num: '3',
+    exerciseId: '24',
+    text: 'V - V - F - V',
+    isAnswer: false
+  },
+  {
+    num: '4',
+    exerciseId: '24',
+    text: 'V - F - V - F',
+    isAnswer: false
+  },
+  {
+    num: '1',
+    exerciseId: '25',
+    text: 'Ambos são padrões estruturais',
+    isAnswer: false
+  },
+  {
+    num: '2',
+    exerciseId: '25',
+    text: 'O Adapter busca fazer uma interface existente ser utilizável por outra interface incompatível a ela',
+    isAnswer: false
+  },
+  {
+    num: '3',
+    exerciseId: '25',
+    text: 'O Adapter trabalha com subsistemas de objetos, enquanto o Facade envolve apenas um objeto',
+    isAnswer: true
+  },
+  {
+    num: '1',
+    exerciseId: '26',
+    text: 'Adapter, Factory Method, Template Method',
+    isAnswer: false
+  },
+  {
+    num: '2',
+    exerciseId: '26',
+    text: 'Singleton, Adapter, Template Method',
+    isAnswer: true
+  },
+  {
+    num: '3',
+    exerciseId: '26',
+    text: 'Factory Method, Singleton, Facade',
+    isAnswer: false
+  },
+  {
+    num: '4',
+    exerciseId: '26',
+    text: 'Facade, Factory Method, Adapter',
+    isAnswer: false
+  },
 ]
 
 export class seedAlternatives1699996988982 implements MigrationInterface {
