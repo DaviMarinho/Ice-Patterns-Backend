@@ -5,31 +5,37 @@ const sublevels = [
     id: '1',
     numSublevel: '1',
     numLevel: '1',
-    name: 'padroes'
+    name: 'Padrões de Projeto'
   },
   {
     id: '2',
     numSublevel: '2',
     numLevel: '1',
-    name: 'singleton'
+    name: 'Singleton'
   },
   {
     id: '3',
     numSublevel: '3',
     numLevel: '1',
-    name: 'facade'
+    name: 'Facade'
   },
   {
     id: '4',
-    numSublevel: '4',
-    numLevel: '1',
-    name: 'template method'
+    numSublevel: '1',
+    numLevel: '2',
+    name: 'Template Method'
   },
   {
     id: '5',
-    numSublevel: '1',
+    numSublevel: '2',
     numLevel: '2',
-    name: 'abc'
+    name: 'Factory Method'
+  },
+  {
+    id: '6',
+    numSublevel: '3',
+    numLevel: '2',
+    name: 'Adapter'
   }
 ]
 
