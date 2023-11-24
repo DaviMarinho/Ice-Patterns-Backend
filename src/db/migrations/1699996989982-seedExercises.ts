@@ -77,56 +77,56 @@ const exercises = [
     type: ExerciseType.TRUE_FALSE,
     question: 'O Template Method é utilizado para definir um esqueleto de um algoritmo em uma classe base, deixando que as subclasses implementem os detalhes específicos:',
     orderKey: '1',
-    sublevelId: '4'
+    sublevelId: '5'
   },
   {
     id: '12',
     type: ExerciseType.TRUE_FALSE,
     question: 'O Template Method é um padrão baseado em heranças:',
     orderKey: '2',
-    sublevelId: '4'
+    sublevelId: '5'
   },
   {
     id: '13',
     type: ExerciseType.MULTIPLE_CHOICE,
     question: 'O padrão de projeto Template Method, que define um esqueleto de algoritmo em uma classe, para que as subclasses implementem etapas específicas, é classificado como um padrão de projeto:',
     orderKey: '3',
-    sublevelId: '4'
+    sublevelId: '5'
   },
   {
     id: '14',
     type: ExerciseType.MULTIPLE_CHOICE,
     question: 'O Factory Method é definido corretamente como um padrão de projeto que:',
     orderKey: '1',
-    sublevelId: '5'
+    sublevelId: '6'
   },
   {
     id: '15',
     type: ExerciseType.TRUE_FALSE,
     question: 'No Factory Method, o método “factory” (fábrica) fica dentro da classe criadora, e deve obrigatoriamente ser abstrato:',
     orderKey: '2',
-    sublevelId: '5'
+    sublevelId: '6'
   },
   {
     id: '16',
     type: ExerciseType.TRUE_FALSE,
     question: 'Uma das principais vantagens do padrão Factory Method é evitar o acoplamento entre o método criador abstrato e os objetos concretos, além de o código de criação ficar em um único local do programa, facilitando a manutenção do código:',
     orderKey: '3',
-    sublevelId: '5'
+    sublevelId: '6'
   },
   {
     id: '17',
     type: ExerciseType.MULTIPLE_CHOICE,
     question: 'Assinale a alternativa INCORRETA sobre o padrão de projeto Adapter:',
     orderKey: '1',
-    sublevelId: '6'
+    sublevelId: '7'
   },
   {
     id: '18',
     type: ExerciseType.MULTIPLE_CHOICE,
     question: 'João está trabalhando em um projeto de software que trata dados. Uma classe de seu programa recebe dados em formato XML, mas João possui uma outra classe de análise de dados que trabalha apenas com o formato JSON. Dessa forma, o padrão de projeto Adapter poderia ser utilizado como um adaptador do formato de dados no programa. Qual dos seguintes critérios NÃO É relevante para a decisão de utilizar ou não o padrão adapter nesse contexto?',
     orderKey: '2',
-    sublevelId: '6'
+    sublevelId: '7'
   },
 ]
 
