@@ -12,6 +12,7 @@ import { makeGetUserMissionsController } from './factories/controllers/getUserMi
 import { makeGetSublevelContentsController } from './factories/controllers/getSublevelContents'
 import { makeGetSublevelExercisesController } from './factories/controllers/getSublevelExercises'
 import { makeGetSublevelsPerLevelController } from './factories/controllers/getSublevelsPerLevel'
+import { makeGetUserExerciseController } from './factories/controllers/getUserExercise'
 import { makeSolveExercisesController } from './factories/controllers/solveExercises'
 import { auth } from './middlewares/auth'
 
@@ -33,6 +34,8 @@ routes.get('/getUserMissions', auth, adaptExpressRoute(makeGetUserMissionsContro
 routes.get('/getSublevelContents', auth, adaptExpressRoute(makeGetSublevelContentsController()))
 routes.get('/getSublevelExercises', auth, adaptExpressRoute(makeGetSublevelExercisesController()))
 routes.get('/getSublevelsPerLevel', auth, adaptExpressRoute(makeGetSublevelsPerLevelController()))
+
+routes.get('/getUserExercise', auth, adaptExpressRoute(makeGetUserExerciseController()))
 
 routes.post('/solveExercises', auth, adaptExpressRoute(makeSolveExercisesController()))
 
