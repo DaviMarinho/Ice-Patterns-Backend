@@ -187,7 +187,7 @@ const contents = [
     sublevelId: '7'
   },
   {
-    text: 'CÓDIGOO adaptador de objeto',
+    text: 'public class Client {<q>}<q><q>public class Target {<q><tab>public void method(data) {<q><tab>}<q>}<q><q>public class Adaptee {<q><tab>public void utilMethod(specialData) {<q><tab>}<q>}<q><q>public class Adapter extends Target {<q><tab>private Adaptee adaptee<q><q><tab>public void method(data) {<q><tab><tab>specialData = convertToAdapteeFormat(data);<q>return adaptee.utilMethod(specialData);<q><tab>}<q>}',
     title: 'Adapter - Exemplo de código',
     position: '3',
     sublevelId: '7'

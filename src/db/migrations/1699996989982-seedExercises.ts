@@ -162,7 +162,7 @@ const exercises = [
   {
     id: '23',
     type: ExerciseType.MULTIPLE_CHOICE,
-    question: '',
+    question: 'Considerando a implementação de código a seguir, qual padrão de projeto melhor a representa?<q><q>public class Serviço {<q><tab>private static Serviço serviço;<q><tab>private Serviço() {<q><tab>}<q><q><tab>public static synchronized Serviço getInstance () {<q><tab><tab>if ( serviço== null )<q><tab><tab><tab>serviço = new Serviço() ;<q><q><tab><tab>return serviço;<q><tab>}<q>}',
     orderKey: '1',
     sublevelId: '8'
   },
