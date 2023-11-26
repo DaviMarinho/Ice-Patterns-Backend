@@ -74,6 +74,7 @@ export class ActivateBoosterUseCase implements UseCase<ActivateBoosterResponse> 
           const response = checkBoosterMission(payload.username, this.userMissionRepository)
 
           response.then(result => {
+            // socketIO.to('user.username').emit('missao', '2')
           }).catch(e => {
             return { 
               isSuccess: false, 
