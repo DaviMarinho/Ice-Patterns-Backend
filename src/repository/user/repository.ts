@@ -101,6 +101,19 @@ class UserRepository implements Repository {
 
     return result
   }
+
+  async activateBooster(username: string, boosterActive: boolean, boosterActiveDateTime?: Date, boosterDeactiveDateTime?: Date): Promise<UpdateResult | undefined> {
+    const result = await this.userRepository.update({
+      username,
+    }, {
+      boosterActive,
+      boosterActiveDateTime,
+      boosterDeactiveDateTime
+    })
+
+    return result
+  }
+
   // async receiveAchievement(username: string, idAchievement: string): Promise<UpdateResult | undefined> {
 
   //   const user = await this.userRepository.findOneBy({

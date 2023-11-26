@@ -21,6 +21,12 @@ export type User = {
     qtXpOnLevel: number
     
     qtXpTotal: number
+
+    boosterActive: boolean
+
+    boosterActiveDateTime?: Date
+
+    boosterDeactiveDateTime?: Date
   
     createdAt?: Date
   

@@ -8,6 +8,6 @@ export const makeSolveExercises = () => {
   const userRepository = new UserRepository()
   const exerciseRepository = new ExerciseRepository()
   const userExerciseRepository = new UserExerciseRepository()
-  const userMissionRepository = new UserMissionRepository()
+  const userMissionRepository = new UserMissionRepository
   return new SolveExercisesUseCase(userRepository, exerciseRepository, userExerciseRepository, userMissionRepository)
 }

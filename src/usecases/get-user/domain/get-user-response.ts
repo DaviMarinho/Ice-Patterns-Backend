@@ -11,6 +11,9 @@ export interface GetUserResponse {
     qtXpOnLevel: number
     qtXpTotal: number
     sublevel: Sublevel
+    boosterActive: boolean
+    boosterActiveDateTime?: Date,
+    boosterDeactiveDateTime?: Date
     createdAt?: Date
     updatedAt?: Date
 }

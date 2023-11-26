@@ -49,6 +49,15 @@ import { UserExercise } from './userExercise'
     @Column({ default: 0 })
     qtXpTotal: number
 
+    @Column({ default: false })
+    boosterActive: boolean
+
+    @Column('timestamptz', {nullable: true})
+    public boosterActiveDateTime?: Date
+
+    @Column('timestamptz', {nullable: true})
+    public boosterDeactiveDateTime?: Date
+
     @OneToMany(() => UserAchievement, userAchievement => userAchievement.user)
     public userAchievements?: UserAchievement[];
 
