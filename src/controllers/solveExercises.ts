@@ -6,6 +6,7 @@ import { SolveExercisesResponse } from '../usecases/solveExercises/domain/solveE
 import { SolveExercisesUseCase } from '../usecases/solveExercises/use-case'
 import { Controller } from './domain/controller'
 import { badRequest, HttpResponse, serverError, success } from './helpers/http'
+import { CheckMissionError } from '../usecases/solveExercises/errors/checkMission-error'
 
 type HttpRequest =  SolveExercisesRequest
 
@@ -35,6 +36,11 @@ export class SolveExercisesController extends Controller {
     } else if (
       !response.isSuccess &&
       response.error instanceof SolveExerciseError
+    ) {
+      return badRequest(response.error)
+    } else if (
+      !response.isSuccess &&
+      response.error instanceof CheckMissionError
     ) {
       return badRequest(response.error)
     } else {

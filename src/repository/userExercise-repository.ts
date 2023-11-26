@@ -66,6 +66,16 @@ class UserExerciseRepository implements UserExercisesRepository {
     }
     return userExercise
   }
+
+  async findByUser(userUsername: string): Promise<UserExercise[] | undefined> {
+    const userExercises = await this.userExerciseRepository.findBy({
+      userUsername,
+    })
+    if (!userExercises) {
+      return undefined
+    }
+    return userExercises
+  }
 }
 
 export default UserExerciseRepository

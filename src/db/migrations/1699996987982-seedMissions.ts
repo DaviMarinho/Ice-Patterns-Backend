@@ -3,8 +3,8 @@ import { MigrationInterface, QueryRunner } from 'typeorm'
 const missions = [
   {
     id: '1',
-    name: '4 exercícios',
-    description: 'Complete seus primeiros 4 exercícios',
+    name: '5 exercícios',
+    description: 'Complete seus primeiros 5 exercícios',
     rewardBooster: '0',
     rewardEnergy: '1',
     rewardCube: '10',
