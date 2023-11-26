@@ -42,7 +42,9 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
         let nextNumSublevel
         let nextNumLevel
 
-        if (numLevel == 7 && numSublevel == 4) {
+        let isLevelUpgrade = false
+
+        if (numLevel == 2 && numSublevel == 4) {
             return {
                 isSuccess: false,
                 error: new LevelMaxError()
@@ -51,6 +53,7 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
             if (numSublevel == 4) {
                 nextNumLevel = numLevel + 1
                 nextNumSublevel = 1
+                isLevelUpgrade = true
             } else {
                 nextNumSublevel = numSublevel + 1
                 nextNumLevel = numLevel
@@ -66,7 +69,11 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
                   error: new LevelUpError()
                 }
               }
-            let qtXpOnLevel = 0
+
+            let qtXpOnLevel = userFound.qtXpOnLevel
+            if (isLevelUpgrade) {
+              qtXpOnLevel = 0
+            }
     
             // update user level
             const updateResult = await this.userRepository.updateUserSublevel(
