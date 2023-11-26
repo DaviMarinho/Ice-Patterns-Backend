@@ -7,12 +7,19 @@ import { UseCase, UseCaseReponse } from '../domain/use-case'
 import { Encryptor } from '../../adapters/bcrypt-adapter'
 import { InitialSublevelError } from './errors/initialSublevel-error'
 import { SublevelsRepository } from '../../repository/port/sublevel-repository'
+import { MissionsRepository } from '../../repository/port/mission-repository'
+import { UserMissionsRepository } from '../../repository/port/userMission-repository'
+import { UserMission } from '../../db/entities/userMission'
+import { UnlockMissionError } from '../levelUp/errors/unlockMission-error'
+
 
 export class CreateUserUseCase implements UseCase<CreateUserResponse> {
   constructor(
     private encryptor: Encryptor,
     private userRepository: Repository,
     private sublevelRepository: SublevelsRepository,
+    private missionRepository: MissionsRepository,
+    private userMissionRepository: UserMissionsRepository,
   ) {}
 
   async execute(
@@ -40,6 +47,7 @@ export class CreateUserUseCase implements UseCase<CreateUserResponse> {
 
       if (user) {
 
+        // Initial sublevel
         const initialSublevel = await this.sublevelRepository.findOneByNumbers(1, 1)
 
         if (!initialSublevel) {
@@ -62,7 +70,32 @@ export class CreateUserUseCase implements UseCase<CreateUserResponse> {
           }
         }
 
-        return { isSuccess: true, data: { email: user.email, username: user.username, sublevel: initialSublevel } }
+        // First mission
+        const missionsToUnlock = await this.missionRepository.findByUnlockingLevel('1')
+  
+        let missionUnlocked = null
+        if (missionsToUnlock && (missionsToUnlock.length > 0)) {
+          if (missionsToUnlock) {
+                missionUnlocked = await this.userMissionRepository.createUserMission(
+                payload.username,
+                missionsToUnlock[0].id,
+                0,
+                new Date(Date.now()))
+              
+              if (!missionUnlocked) {
+                return {
+                  isSuccess: false,
+                  error: new UnlockMissionError()
+                }
+              }
+          }
+        }
+        
+        if (missionUnlocked) {
+          return { isSuccess: true, data: { email: user.email, username: user.username, sublevel: initialSublevel, missionUnlocked: missionUnlocked} }
+        } else {
+          return { isSuccess: true, data: { email: user.email, username: user.username, sublevel: initialSublevel} }
+        }
       } else {
         return {
           isSuccess: false,

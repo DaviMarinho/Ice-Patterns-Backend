@@ -3,6 +3,7 @@ import { CreateUserResponse } from '../usecases/create-user/domain/create-user-r
 import { CreateUserError } from '../usecases/create-user/errors/create-user-error'
 import { UserAlreadyExistsError } from '../usecases/create-user/errors/user-already-exists-error'
 import { CreateUserUseCase } from '../usecases/create-user/use-case'
+import { UnlockMissionError } from '../usecases/levelUp/errors/unlockMission-error'
 import { Controller } from './domain/controller'
 import { HttpResponse, serverError, success, badRequest } from './helpers/http'
 
@@ -24,6 +25,8 @@ export class CreateUserController extends Controller {
     } else if (!response.isSuccess && response.error instanceof CreateUserError) {
       return badRequest(response.error)
     } else if (!response.isSuccess && response.error instanceof UserAlreadyExistsError) {
+      return badRequest(response.error)
+    } else if (!response.isSuccess && response.error instanceof UnlockMissionError) {
       return badRequest(response.error)
     } else {
       return serverError(response.error)
