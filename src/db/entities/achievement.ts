@@ -2,7 +2,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
-    PrimaryGeneratedColumn,
+    PrimaryColumn,
     UpdateDateColumn,
     OneToMany
   } from 'typeorm'
@@ -11,7 +11,7 @@ import { UserAchievement } from './userAchievement'
   
   @Entity()
   export class Achievement {  
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryColumn()
     id: string
 
     @Column({ type: 'timestamptz' })

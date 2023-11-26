@@ -2,7 +2,7 @@ import {
     Column,
     CreateDateColumn,
     Entity,
-    PrimaryGeneratedColumn,
+    PrimaryColumn,
     UpdateDateColumn,
     OneToMany
   } from 'typeorm'
@@ -11,7 +11,7 @@ import { UserMission } from './userMission'
   
   @Entity()
   export class Mission {  
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryColumn()
     id: string
 
     @Column()
