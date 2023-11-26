@@ -56,6 +56,18 @@ class UserMissionRepository implements UserMissionsRepository {
     return result
   }
 
+  async findOne(userUsername: string, missionId: string): Promise<UserMission | undefined> {
+    const userMission = await this.userMissionRepository.findOneBy({
+      userUsername,
+      missionId
+    })
+    if (!userMission) {
+      return undefined
+    }
+
+    return userMission
+  }
+
 }
 
 export default UserMissionRepository

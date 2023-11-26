@@ -7,10 +7,18 @@ import { GetUserError } from '../get-user/errors/get-user-error'
 import { ActivateBoosterError } from './errors/activateBooster-error'
 import { UseCase, UseCaseReponse } from '../domain/use-case'
 import { NotEnoughBoosterError } from './errors/notEnoughBooster-error'
+import { CheckMissionError } from '../solveExercises/errors/checkMission-error'
+import { UserMissionsRepository } from '../../repository/port/userMission-repository'
+import { UserMission } from '../../db/entities/userMission'
 
+type response = {
+  isSuccess: boolean,
+  error?: Error
+}
 export class ActivateBoosterUseCase implements UseCase<ActivateBoosterResponse> {
   constructor(
-    private userRepository: Repository
+    private userRepository: Repository,
+    private userMissionRepository: UserMissionsRepository,
   ) {}
 
   async execute(
@@ -62,6 +70,17 @@ export class ActivateBoosterUseCase implements UseCase<ActivateBoosterResponse> 
               error: new ActivateBoosterError()
             }
           }
+
+          const response = checkBoosterMission(payload.username, this.userMissionRepository)
+
+          response.then(result => {
+          }).catch(e => {
+            return { 
+              isSuccess: false, 
+              error: e
+            }
+          }
+          )
 
         return { 
             isSuccess: true, 
@@ -122,4 +141,40 @@ function countdownTimer(duration: number): Promise<void> {
         }
       }, 1000);
     });
+}
+
+export async function checkBoosterMission(username: string, userMissionRepository: UserMissionsRepository): Promise<response | undefined> {
+  
+  console.log(`checking ${username}'s activate booster mission`)
+  
+  try {
+    const mission = await userMissionRepository.findOne(username, '2')
+    if (!mission) {
+      return {
+        isSuccess: true,
+      }
+    } else {
+      if (mission.progress != 100) {
+        const progress = 100
+        const dateTimeCompleted = new Date(Date.now())
+        const missionId = mission.missionId
+
+        const updatedMission = await userMissionRepository.completeMission(username, missionId, dateTimeCompleted, progress)
+        if (!updatedMission) {
+          return {
+            isSuccess: false,
+            error: new CheckMissionError()
+          }
+        }
+      }
+      return
+    }
+  } catch (error) {
+    return {
+      isSuccess: false,
+      error: new CheckMissionError()
+    }
   }
+  
+}
+  

@@ -7,4 +7,5 @@ export interface UserMissionsRepository {
   findMissionsByUsername(userUsername: string): Promise<UserMission[] | undefined>
   updateProgress(userUsername: string, missionId: string, progress: number): Promise<UpdateResult | undefined>
   completeMission(userUsername: string, missionId: string, dateTimeCompleted: Date, progress: number): Promise<UpdateResult | undefined>
+  findOne(userUsername: string, missionId: string): Promise<UserMission | undefined>
 }
