@@ -125,16 +125,24 @@ export class SolveExercisesUseCase implements UseCase<SolveExercisesResponse> {
             }
         }    
 
-        const response = checkNumberOfSolvedExercises(payload.username, this.userExerciseRepository, this.userMissionRepository)
-
-        response.then(result => {
-        }).catch(e => {
-          return { 
-            isSuccess: false, 
-            error: e
+        let response = null
+        
+        response = await checkNumberOfSolvedExercises(payload.username, this.userExerciseRepository, this.userMissionRepository)
+        if (!response?.isSuccess) {
+          return {
+            isSuccess: false,
+            error: new CheckMissionError()
           }
         }
-        )
+
+        response = await checkMissionDesafio(payload.username, payload.exercises[0].exerciseId, this.exerciseRepository, this.userMissionRepository)
+        if (!response?.isSuccess) {
+          return {
+            isSuccess: false,
+            error: new CheckMissionError()
+          }
+        }
+        
 
         return { 
             isSuccess: true, 
@@ -229,6 +237,64 @@ export async function checkNumberOfSolvedExercises(username: string, userExercis
         }
 
       }
+  } catch (error) {
+    return {
+      isSuccess: false,
+      error: new CheckMissionError()
+    }
+  }
+  
+}
+
+export async function checkMissionDesafio(username: string, exampleExerciseId: string, exerciseRepository: ExercisesRepository, userMissionRepository: UserMissionsRepository): Promise<response | undefined> {
+
+  console.log(`checking ${username}'s desafio mission`)
+  try {
+    const exercises = await exerciseRepository.findBySublevelId('4')
+    if (!exercises || exercises.length == 0) {
+      return {
+        isSuccess: false,
+        error: new CheckMissionError()
+      }
+    }
+
+    let isDesafio = false
+    for (const exercise of exercises) {
+      if (exercise.id == exampleExerciseId) {
+        isDesafio =  true
+        break;
+      }
+    }
+
+    if (isDesafio) {
+      const mission = await userMissionRepository.findOne(username, '3')
+      if (!mission) {
+        return {
+          isSuccess: true,
+        }
+      } else {
+        const progress = 100
+        const dateTimeCompleted = new Date(Date.now())
+        const missionId = mission.missionId
+  
+        const updatedMission = await userMissionRepository.completeMission(username, missionId, dateTimeCompleted, progress)
+        if (!updatedMission) {
+          return {
+            isSuccess: false,
+            error: new CheckMissionError()
+          }
+        }
+  
+        return {
+          isSuccess: true,
+        }
+      } 
+    }
+
+    return {
+      isSuccess: true,
+    }
+
   } catch (error) {
     return {
       isSuccess: false,
