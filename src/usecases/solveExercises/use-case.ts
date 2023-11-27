@@ -284,6 +284,8 @@ export async function checkMissionDesafio(username: string, exampleExerciseId: s
             error: new CheckMissionError()
           }
         }
+
+        // socketIO.to('user.username').emit('missao', '3')
   
         return {
           isSuccess: true,

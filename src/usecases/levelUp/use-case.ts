@@ -10,6 +10,7 @@ import { MissionsRepository } from '../../repository/port/mission-repository'
 import { UserMissionsRepository } from '../../repository/port/userMission-repository'
 import { UserMission } from '../../db/entities/userMission'
 import { UnlockMissionError } from './errors/unlockMission-error'
+import { socketIO } from '../../main'
 
 export class LevelUpUseCase implements UseCase<LevelUpResponse> {
   constructor(
@@ -25,6 +26,7 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
   ): Promise<UseCaseReponse<LevelUpResponse>> {
     try {
       let userFound = null
+      // const socket = io();
 
       if (payload.username) {
         userFound = await this.userRepository.findOneByUsername(payload.username)
@@ -51,6 +53,15 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
               }
         } else {
             if (numSublevel == 4) {
+
+                // ACHIEVEMENTs
+                if (numLevel == 1) {
+                  socketIO.to('user.username').emit('conquista', '1')
+                }
+                if (numLevel == 2) {
+                  socketIO.to('user.username').emit('conquista', '5')
+                }
+
                 nextNumLevel = numLevel + 1
                 nextNumSublevel = 1
                 isLevelUpgrade = true
