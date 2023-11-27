@@ -56,7 +56,7 @@ export class ActivateBoosterUseCase implements UseCase<ActivateBoosterResponse> 
             }
           }
 
-        startBoosterCountDown(25, userFound.username, this.userRepository)
+        startBoosterCountDown(900, userFound.username, this.userRepository)
 
         const updatedUser = await this.userRepository.updateUserItemQuantity(
             userFound.username,
