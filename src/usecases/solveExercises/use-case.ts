@@ -1,7 +1,7 @@
 import { Repository } from '../../repository/port/user-repository'
 import { UserExercisesRepository } from '../../repository/port/userExercise-repository'
 import { ExercisesRepository } from '../../repository/port/exercise-repository'
-import { SolveExercisesRequest } from './domain/solveExercises-request'
+import { SolveExercisesRequest, ExerciseIdCorrect } from './domain/solveExercises-request'
 import { SolveExercisesResponse } from '../solveExercises/domain/solveExercises-response'
 import { GetUserError } from '../get-user/errors/get-user-error'
 import { GetExerciseError } from './errors/getExercise-error'
@@ -128,7 +128,7 @@ export class SolveExercisesUseCase implements UseCase<SolveExercisesResponse> {
 
         let response = null
         
-        response = await checkNumberOfSolvedExercises(payload.username, this.userExerciseRepository, this.userMissionRepository)
+        response = await checkFirstExerciseBattery(payload.username, payload.exercises, this.exerciseRepository, this.userMissionRepository)
         if (!response?.isSuccess) {
           return {
             isSuccess: false,
@@ -168,80 +168,61 @@ export class SolveExercisesUseCase implements UseCase<SolveExercisesResponse> {
   }
 }
 
-export async function checkNumberOfSolvedExercises(username: string, userExerciseRepository: UserExercisesRepository, userMissionRepository: UserMissionsRepository): Promise<response | undefined> {
+export async function checkFirstExerciseBattery(username: string, exercises: ExerciseIdCorrect[], exerciseRepository: ExercisesRepository, userMissionRepository: UserMissionsRepository): Promise<response | undefined> {
 
   try {
-    console.log(`checking ${username}'s number of solved exercises`)
-    const userExercises = await userExerciseRepository.findByUser(username)
-    if (!userExercises) {
-        return {
-            isSuccess: false,
-            error: new CheckMissionError()
+    console.log(`checking ${username}'s first battery`)
+    
+    const mission = await userMissionRepository.findOne(username, '1')
+    if (!mission) {
+      return {
+        isSuccess: true,
+      }
+    } else {
+      if (mission.progress != 100) {
+        const exercisesFirstSublevel = await exerciseRepository.findBySublevelId('1')
+        if (!exercisesFirstSublevel) {
+            return {
+                isSuccess: false,
+                error: new CheckMissionError()
+            }
         }
-    }
 
-    const missionId = '1'
-    let progress = 0
-    let updatedMission = null
+        let isFirstBattery = false
 
-    const numOfExercises = userExercises.length
-      if (numOfExercises <= 5) {
+        for (const exerciseFirstSublevel of exercisesFirstSublevel) {
+          console.log(`${exerciseFirstSublevel.id} X ${exercises[0].exerciseId}`)
+          if (exerciseFirstSublevel.id == exercises[0].exerciseId) {
+            isFirstBattery = true
+            break;
+          }
+        }
 
-        if (numOfExercises == 5) {
+        if (isFirstBattery) {
           // complete mission
-          progress = 100
+          const progress = 100
           const dateTimeCompleted = new Date(Date.now())
-          updatedMission = await userMissionRepository.completeMission(username, missionId, dateTimeCompleted, progress)
+          const missionId = '1'
+          const updatedMission = await userMissionRepository.completeMission(username, missionId, dateTimeCompleted, progress)
           if (!updatedMission) {
             return {
               isSuccess: false,
               error: new CheckMissionError()
             }
           }
-          // send socket data
           socketIO.to(username).emit('missao', {cubeReward: 15})
-        } else {
-          switch (numOfExercises) {
-            case 1:
-              // update mission progress to 20%
-              progress = 20
-              break;
-            case 2:
-              // update mission progress to 40%
-              progress = 40
-              break;
-            case 3:
-              // update mission progress to 60%
-              progress = 60
-              break;
-            case 4:
-              // update mission progress to 80%
-              progress = 80
-              break;
-            default:
-              break;
-          }
-
-          console.log(`updating ${username}'s mission to progress ${progress}`)
-
-          updatedMission = await userMissionRepository.updateProgress(username, missionId, progress)
-          if (!updatedMission) {
-            return {
-                isSuccess: false,
-                error: new CheckMissionError()
-            }
+          return {
+            isSuccess: true,
           }
         }
-        
         return {
           isSuccess: true,
         }
-
       }
-
       return {
         isSuccess: true,
       }
+    }
   } catch (error) {
     return {
       isSuccess: false,
@@ -250,6 +231,89 @@ export async function checkNumberOfSolvedExercises(username: string, userExercis
   }
   
 }
+
+// export async function checkNumberOfSolvedExercises(username: string, userExerciseRepository: UserExercisesRepository, userMissionRepository: UserMissionsRepository): Promise<response | undefined> {
+
+//   try {
+//     console.log(`checking ${username}'s number of solved exercises`)
+//     const userExercises = await userExerciseRepository.findByUser(username)
+//     if (!userExercises) {
+//         return {
+//             isSuccess: false,
+//             error: new CheckMissionError()
+//         }
+//     }
+
+//     const missionId = '1'
+//     let progress = 0
+//     let updatedMission = null
+
+//     const numOfExercises = userExercises.length
+//       if (numOfExercises <= 5) {
+
+//         if (numOfExercises == 5) {
+//           // complete mission
+//           progress = 100
+//           const dateTimeCompleted = new Date(Date.now())
+//           updatedMission = await userMissionRepository.completeMission(username, missionId, dateTimeCompleted, progress)
+//           if (!updatedMission) {
+//             return {
+//               isSuccess: false,
+//               error: new CheckMissionError()
+//             }
+//           }
+//           // send socket data
+//           socketIO.to(username).emit('missao', {cubeReward: 15})
+//         } else {
+//           switch (numOfExercises) {
+//             case 1:
+//               // update mission progress to 20%
+//               progress = 20
+//               break;
+//             case 2:
+//               // update mission progress to 40%
+//               progress = 40
+//               break;
+//             case 3:
+//               // update mission progress to 60%
+//               progress = 60
+//               break;
+//             case 4:
+//               // update mission progress to 80%
+//               progress = 80
+//               break;
+//             default:
+//               break;
+//           }
+
+//           console.log(`updating ${username}'s mission to progress ${progress}`)
+
+//           updatedMission = await userMissionRepository.updateProgress(username, missionId, progress)
+//           if (!updatedMission) {
+//             return {
+//                 isSuccess: false,
+//                 error: new CheckMissionError()
+//             }
+//           }
+//         }
+        
+//         return {
+//           isSuccess: true,
+//         }
+
+//       }
+
+//       return {
+//         isSuccess: true,
+//       }
+//   } catch (error) {
+//     return {
+//       isSuccess: false,
+//       error: new CheckMissionError()
+//     }
+//   }
+  
+// }
 
 export async function checkMissionDesafio(username: string, exampleExerciseId: string, exerciseRepository: ExercisesRepository, userMissionRepository: UserMissionsRepository): Promise<response | undefined> {
 

@@ -3,8 +3,8 @@ import { MigrationInterface, QueryRunner } from 'typeorm'
 const missions = [
   {
     id: '1',
-    name: '5 exercícios',
-    description: 'Complete seus primeiros 5 exercícios',
+    name: 'Primeira bateria de exercícios',
+    description: 'Complete sua primeira bateria de exercícios com mais de 60% de acerto',
     rewardBooster: '0',
     rewardEnergy: '1',
     rewardCube: '10',
@@ -33,8 +33,8 @@ const missions = [
   },
   {
     id: '4',
-    name: 'completar exercicio com mais de 80% de acerto',
-    description: 'Complete uma bateria de exercícios com mais de 90% de acerto',
+    name: 'completar 2 exercicios com mais de 90% de acerto',
+    description: 'Complete duas baterias de exercícios com mais de 90% de acerto',
     rewardBooster: '0',
     rewardEnergy: '0',
     rewardCube: '8',
