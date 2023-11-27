@@ -56,10 +56,10 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
 
                 // ACHIEVEMENTs
                 if (numLevel == 1) {
-                  socketIO.to('user.username').emit('conquista', '1')
+                  socketIO.to(userFound.username).emit('conquista', '1')
                 }
                 if (numLevel == 2) {
-                  socketIO.to('user.username').emit('conquista', '5')
+                  socketIO.to(userFound.username).emit('conquista', '5')
                 }
 
                 nextNumLevel = numLevel + 1
