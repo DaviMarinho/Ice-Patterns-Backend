@@ -114,35 +114,21 @@ class UserRepository implements Repository {
     return result
   }
 
-  // async receiveAchievement(username: string, idAchievement: string): Promise<UpdateResult | undefined> {
+  async listAll(): Promise<User[] | undefined> {
+    const users = await this.userRepository.find({
+      select: {
+        username: true,
+        qtEnergy: true,
+        qtCube: true,
+        qtBooster: true
+    },
+    })
 
-  //   const user = await this.userRepository.findOneBy({
-  //     username
-  //   })
-  //   if (!user) {
-  //     return undefined
-  //   }
-
-  //   const achievementsList = user.achievements
-    
-  //   const newAchievement = await this.achievementRepository.findOneBy({
-  //     id
-  //   })
-  //   if (!newAchievement) {
-  //     return undefined
-  //   }
-
-  //   achievementsList?.push(newAchievement)
-
-  //   const userAchievement = this.userAchievementRepository.create({
-  //     username,
-  //     achievementsId: idAchievement,
-  //     dateTime
-  //   })
-
-  //   await this.userAchievementRepository.save(userAchievement)
-  //   return userAchievement
-  // }
+    if (!users) {
+      return undefined
+    }
+    return users
+  }
 
 
 }

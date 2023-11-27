@@ -1,10 +1,12 @@
 import 'reflect-metadata'
 import express, { json } from 'express'
+import cron from 'node-cron'
 import { dataSource } from './db/config'
 import routes from './routes'
 import cors from 'cors'
 import { Server } from 'socket.io'
 import { createServer } from 'http'
+import { energy } from './schedule'
 
 dataSource
   .initialize()
@@ -29,10 +31,16 @@ const socketIO = new Server(serverHttp, {
   }
 })
 
+cron.schedule('*/5 * * * *', energy)
+
 socketIO.on('connection', (socket) => {
   console.log(`${socket.id} a user connected`);
   console.log(socket.handshake.auth.token)
-  socket.join(socket.handshake.auth.token)
+  
+  const username = socket.handshake.auth.token
+
+  socket.join(username)
+
   socket.on('disconnect', () => {
     console.log('user disconnected');
   });

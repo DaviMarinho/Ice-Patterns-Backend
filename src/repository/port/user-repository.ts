@@ -16,4 +16,5 @@ export interface Repository {
   updateUserXpPoints(username: string, qtXpOnLevel: number, qtXpTotal: number): Promise<UpdateResult | undefined>
   updateUserSublevel(username: string, nextSublevel: Sublevel, qtXpOnLevel: number): Promise<UpdateResult | undefined>
   activateBooster(username: string, boosterActive: boolean, boosterActiveDateTime?: Date, boosterDeactiveDateTime?: Date): Promise<UpdateResult | undefined>
+  listAll(): Promise<User[] | undefined>
 }
