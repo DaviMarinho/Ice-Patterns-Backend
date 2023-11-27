@@ -2,62 +2,32 @@ import { MigrationInterface, QueryRunner } from 'typeorm'
 
 const contents = [
   {
-    text: 'Os padrões de projeto em software são soluções para problemas comuns em um projeto de software. Um padrão não é um trecho de código utilizável em diversas situações, mas sim um conceito geral utilizado para resolver problemas de projeto orientado a objetos.',
+    text: 'Os padrões de projeto em software são soluções para problemas comuns em um projeto de software. Um padrão não é um trecho de código utilizável em diversas situações, mas sim um conceito geral utilizado para resolver problemas de projeto orientado a objetos.<q><q>Os padrões de projetos não são necessariamente criados ou inventados por alguém. São soluções típicas para problemas comuns. Sendo assim, as soluções vão sendo repetidamente utilizadas em projetos, e eventualmente ela será descrita e caracterizada de maneira mais formal, surgindo assim um padrão de projeto.<q><q>Um livro de grande referência para o assunto, “Padrões de Projeto - Soluções reutilizáveis de software orientado a objetos” dos autores conhecidos como “Gang of Four”, identifica 23 padrões, divididos em 3 categorias com base em seu propósito: criacionais, estruturais e comportamentais.',
     title: 'O que são Padrões de Projeto?',
     position: '1',
     sublevelId: '1'
   },
   {
-    text: 'Os padrões de projetos não são necessariamente criados ou inventados por alguém. São soluções típicas para problemas comuns. Sendo assim, as soluções vão sendo repetidamente utilizadas em projetos, e eventualmente ela será descrita e caracterizada de maneira mais formal, surgindo assim um padrão de projeto.',
+    text: '<t>Padrões Criacionais: são utilizados na criação de objetos para flexibilizar, tornando os sistemas independentes da maneira como os objetos são criados, além de aumentar a reutilização de código;<q><t>Padrões Estruturais: tratam da composição de classes e objetos para formar estruturas maiores, ainda mantendo-as flexíveis e eficientes, e<q><t>Padrões Comportamentais: focam na atribuição de responsabilidades entre objetos e a comunicação entre eles, facilitando a visualização e o controle de fluxos complexos.',
     title: 'O que são Padrões de Projeto?',
     position: '2',
     sublevelId: '1'
   },
   {
-    text: 'Um livro de grande referência para o assunto, “Padrões de Projeto - Soluções reutilizáveis de software orientado a objetos” dos autores conhecidos como “Gang of Four”, identifica 23 padrões, divididos em 3 categorias com base em seu propósito: criacionais, estruturais e comportamentais.',
-    title: 'O que são Padrões de Projeto?',
+    text: 'Para descrever os padrões de projeto, alguns elementos são comumente utilizados, sendo alguns deles:<q><t>Nome e classificação; <q><t>Motivação: explica o problema e a solução que o padrão torna possível; <q><t>Aplicabilidade: explicita situações em que o padrão pode ser aplicado, e como reconhecer essas situações; <q><t>Estruturas: mostram as partes do padrão e como se relacionam; <q><t>Exemplo de código: trechos de código que mostram como o padrão pode ser implementado, e <q><t>Padrões relacionados: apresentam os padrões que estão intimamente relacionados a ele, explicitando as semelhanças, diferenças e como podem ser usados em conjunto.',
+    title: 'Alguns elementos dos padrões de projeto',
     position: '3',
     sublevelId: '1'
   },
   {
-    text: 'Padrões Criacionais: são utilizados na criação de objetos para flexibilizar, tornando os sistemas independentes da maneira como os objetos são criados, além de aumentar a reutilização de código;',
-    title: 'O que são Padrões de Projeto?',
+    text: 'Os padrões de projeto não são soluções prontas fixas. Logo, não devem ser usadas em todos os contextos sem justificativas. O uso ineficiente de padrões de projeto pode complicar o projeto de software e gerar mais dificuldade do que solucionar problemas de fato.<q><q>Sendo assim, é importante sempre entender as situações em que os padrões podem ser úteis, bem como estar ciente dos seus possíveis malefícios em caso de alterações futuras no projeto, além de compreender como utilizar os padrões adaptados a cada contexto.',
+    title: 'Contras de alguns padrões',
     position: '4',
-    sublevelId: '1'
-  },
-  {
-    text: 'Padrões Estruturais: tratam da composição de classes e objetos para formar estruturas maiores, ainda mantendo-as flexíveis e eficientes, e',
-    title: 'O que são Padrões de Projeto?',
-    position: '5',
-    sublevelId: '1'
-  },
-  {
-    text: 'Padrões Comportamentais: focam na atribuição de responsabilidades entre objetos e a comunicação entre eles, facilitando a visualização e o controle de fluxos complexos.',
-    title: 'O que são Padrões de Projeto?',
-    position: '6',
-    sublevelId: '1'
-  },
-  {
-    text: 'Para descrever os padrões de projeto, alguns elementos são comumente utilizados, sendo alguns deles: Nome e classificação; Motivação: explica o problema e a solução que o padrão torna possível; Aplicabilidade: explicita situações em que o padrão pode ser aplicado, e como reconhecer essas situações; Estruturas: mostram as partes do padrão e como se relacionam; Exemplo de código: trechos de código que mostram como o padrão pode ser implementado, e Padrões relacionados: apresentam os padrões que estão intimamente relacionados a ele, explicitando as semelhanças, diferenças e como podem ser usados em conjunto.',
-    title: 'Alguns elementos dos padrões de projeto',
-    position: '7',
-    sublevelId: '1'
-  },
-  {
-    text: 'Os padrões de projeto não são soluções prontas fixas. Logo, não devem ser usadas em todos os contextos sem justificativas. O uso ineficiente de padrões de projeto pode complicar o projeto de software e gerar mais dificuldade do que solucionar problemas de fato.',
-    title: 'Contras de alguns padrões',
-    position: '8',
-    sublevelId: '1'
-  },
-  {
-    text: 'Sendo assim, é importante sempre entender as situações em que os padrões podem ser úteis, bem como estar ciente dos seus possíveis malefícios em caso de alterações futuras no projeto, além de compreender como utilizar os padrões adaptados a cada contexto.',
-    title: 'Contras de alguns padrões',
-    position: '9',
     sublevelId: '1'
   },
 
   {
-    text: 'É um padrão criacional que, de acordo com Gamma et al, é usado para “garantir que uma classe tenha somente uma instância, fornecendo um ponto global de acesso para a mesma”.<q><q>O Singleton resolve essencialmente dois problemas:<t>Garantir que uma classe tenha somente uma instância: cria-se um objeto, e depois decidiu-se criar um novo. Porém, ao invés de receber um novo objeto, receberá o objeto que já foi criado anteriormente<t>Fornecer um ponto global de acesso à instância: assim como uma variável global, o padrão Singleton permite que você acesse algum objeto de qualquer lugar no programa. Contudo, ele também protege aquela instância de ser sobrescrita por outro código',
+    text: 'É um padrão criacional que, de acordo com Gamma et al, é usado para “garantir que uma classe tenha somente uma instância, fornecendo um ponto global de acesso para a mesma”.<q><q>O Singleton resolve essencialmente dois problemas:<q><t>Garantir que uma classe tenha somente uma instância: cria-se um objeto, e depois decidiu-se criar um novo. Porém, ao invés de receber um novo objeto, receberá o objeto que já foi criado anteriormente<q><t>Fornecer um ponto global de acesso à instância: assim como uma variável global, o padrão Singleton permite que você acesse algum objeto de qualquer lugar no programa. Contudo, ele também protege aquela instância de ser sobrescrita por outro código',
     title: 'Singleton',
     position: '1',
     sublevelId: '2'
@@ -75,77 +45,65 @@ const contents = [
     sublevelId: '2'
   },
   {
-    text: '<t>Quando o programa deve ter apenas uma instância disponível para todos os clientes, e<t>Quando é necessário um controle mais estrito sobre as variáveis globais.',
+    text: '<t>Quando o programa deve ter apenas uma instância disponível para todos os clientes, e<q><t>Quando é necessário um controle mais estrito sobre as variáveis globais.',
     title: 'Singleton - Aplicabilidade',
     position: '4',
     sublevelId: '2'
   },
 
   {
-    text: 'É um padrão estrutural, que fornece uma interface simplificada para uma biblioteca, um framework ou qualquer conjunto complexo de classes.<q><q>De acordo com Gamma et al, o Façade “fornece uma interface unificada para um conjunto de interfaces em um subsistema. Façade define uma interface de nível mais alto que torna o subsistema mais fácil de ser usado.”',
+    text: 'É um padrão estrutural, que fornece uma interface simplificada para uma biblioteca, um framework ou qualquer conjunto complexo de classes.<q><q>De acordo com Gamma et al, o Façade “fornece uma interface unificada para um conjunto de interfaces em um subsistema. Façade define uma interface de nível mais alto que torna o subsistema mais fácil de ser usado.”<q><q>Ter uma fachada (o facade) é útil quando precisa-se integrar a aplicação com uma biblioteca mais complexa, com muitas funcionalidades. Dessa forma, a fachada poderia fornecer convenientemente o acesso a uma funcionalidade específica do subsistema (biblioteca). Ao final, ao invés da aplicação se comunicar diretamente com os objetos do subsistema diretamente, ela é utilizada através da fachada.',
     title: 'Facade',
     position: '1',
-    sublevelId: '3'
-  },
-  {
-    text: 'Ter uma fachada (o facade) é útil quando precisa-se integrar a aplicação com uma biblioteca mais complexa, com muitas funcionalidades. Dessa forma, a fachada poderia fornecer convenientemente o acesso a uma funcionalidade específica do subsistema (biblioteca). Ao final, ao invés da aplicação se comunicar diretamente com os objetos do subsistema diretamente, ela é utilizada através da fachada.',
-    title: 'Facade',
-    position: '2',
     sublevelId: '3'
   },
   {
     text: 'class SubSystem1 {<q><tab>// ...<q>}<q><q>class SubSystem2 {<q><tab>// ...<q>}<q><q>class SubSystem3 {<q><tab>// ...<q>}<q><q>class SubSystem4 {<q><tab>// ...<q>}<q><q>class Facade {<q><tab>public void process () {<q><tab><tab>SubSystem1 subsystem1 = new SubSystem1();<q><tab><tab>SubSystem2 subsystem2 = new SubSystem2();<q><tab><tab>SubSystem3 subsystem3 = new SubSystem3();<q><tab><tab>SubSystem4 subsystem4 = new SubSystem4();<q><tab><tab>// …<q><tab>}<q>}<q><q>class Application {<q><tab>public static void main ( String [] args ) {<q><tab><tab>Facade facade = new Facade();<q><tab><tab>facade.process();<q><tab>}<q>}',
     title: 'Facade - Exemplo de código',
-    position: '3',
+    position: '2',
     sublevelId: '3'
   },
   {
     text: 'Os “subsystems” representam algumas classes, por exemplo, de um framework complexo.<q><q>A classe Facade é a classe fachada que esconde a complexidade do framework e de seus subsistemas, fornecendo uma interface mais simples. Essa classe possuirá, por exemplo, métodos (como o “process” do exemplo) que farão o tratamento e a organização necessários para as funcionalidades do framework.<q><q>Por fim, a classe Application representa a aplicação em si, que não dependerá diretamente de diversas classes fornecidas pelo framework complexo. Ao invés disso, a classe se comunicará com a fachada.',
     title: 'Facade - Exemplo de código',
-    position: '4',
+    position: '3',
     sublevelId: '3'
   },
   {
-    text: '<t>Uma vantagem é que, se decidir trocar de subsistema (por exemplo, trocar de um framework para outro de mesmo propósito), será necessário basicamente reescrever a classe fachada, minimizando o esforço de alterações na aplicação;<t>Quando se precisa ter uma interface limitada e simples para um subsistema complexo, e<t>Quando quer estruturar um subsistema em camadas.',
+    text: '<t>Uma vantagem é que, se decidir trocar de subsistema (por exemplo, trocar de um framework para outro de mesmo propósito), será necessário basicamente reescrever a classe fachada, minimizando o esforço de alterações na aplicação;<q><t>Quando se precisa ter uma interface limitada e simples para um subsistema complexo, e<q><t>Quando quer estruturar um subsistema em camadas.',
     title: 'Facade - Aplicabilidade',
-    position: '5',
+    position: '4',
     sublevelId: '3'
   },
   {
     text: '<t>Singleton: uma classe fachada pode frequentemente ser transformada em uma singleton, já que um único objeto fachada é suficiente na maioria dos casos.',
     title: 'Facade - Relação com outros padrões',
-    position: '6',
+    position: '5',
     sublevelId: '3'
   },
 
   {
-    text: 'É um padrão comportamental que define o esqueleto de um algoritmo na superclasse, mas deixa as subclasses sobrescrever etapas específicas do algoritmo sem modificar sua estrutura.',
+    text: 'É um padrão comportamental que define o esqueleto de um algoritmo na superclasse, mas deixa as subclasses sobrescrever etapas específicas do algoritmo sem modificar sua estrutura.<q><q>O padrão sugere que se divida um algoritmo em etapas, e transforme essas etapas em métodos, colocando uma série de chamadas para esses métodos dentro de um único método padrão. As etapas podem ser tanto abstratas, ou ter alguma implementação padrão.<q><q>Para usar o algoritmo, o cliente deve fornecer sua própria subclasse, implementar todas as etapas abstratas, e sobrescrever algumas das opcionais se necessário (mas não o próprio método padrão).',
     title: 'Template Method',
     position: '1',
     sublevelId: '5'
   },
   {
-    text: 'O padrão sugere que se divida um algoritmo em etapas, e transforme essas etapas em métodos, colocando uma série de chamadas para esses métodos dentro de um único método padrão. As etapas podem ser tanto abstratas, ou ter alguma implementação padrão.<q><q>Para usar o algoritmo, o cliente deve fornecer sua própria subclasse, implementar todas as etapas abstratas, e sobrescrever algumas das opcionais se necessário (mas não o próprio método padrão).',
-    title: 'Template Method',
-    position: '2',
-    sublevelId: '5'
-  },
-  {
-    text: 'public abstract class DomesticActivities {<q><tab>final void doDailyActivities () {<q><tab><tab>cleanHouse () ;<q><tab><tab>washDishes () ;<q><tab><tab>washClothes () ;<q><tab>}<q><tab>void cleanHouse () {<q><tab><tab>System.out.println ( " Mop the house . " ) ;<q><tab>}<q>void washDishes () {<q><tab><tab>System.out.println ( " Wash the dishes . " ) ;<q><tab>}<q><tab>abstract void washClothes () ;<q>}<q><q>class WeekendActivities extends DomesticActivities {<q><tab>void cleanHouse () {<q><tab><tab>System.out.println ( " Clean the house and bathrooms . " ) ;<q><tab>}<q><tab>void washDishes () {<q><tab><tab>System.out.println ( " Wash the dishes and the pans " ) ;<q><tab>}<q><tab>void washClothes () {<q><tab><tab>System.out.println ( " Wash used towels . " ) ;<q><tab>}<q><tab>void tidyBackyard () {<q><tab><tab>System.out.println ( " Clean backyard and mow the lawn . " ) ;<q><tab>}<q>}<q><q>class WeeklyActivity extends DomesticActivities {<q><tab>void cleanHouse () {<q><tab><tab>System.out.println ( " Sweep and mop the house . " ) ;<q><tab>}<q><tab>void washDishes () {<q><tab><tab>System.out.println ( " Wash the dishes and tidying up the kitchen " ) ;<q><tab>}<q><tab>void washClothes () {<q><tab><tab>System.out.println ( " Wash clothes and dirty bed linens . " ) ;<q><tab>}<q><tab>void washRug () {<q><tab><tab>System.out.println ( " Wash the living room rug . " ) ;<q><tab>}<q>}',
+    text: 'public abstract class DomesticActivities {<q><tab>final void doDailyActivities () {<q><tab><tab>cleanHouse () ;<q><tab><tab>washDishes () ;<q><tab><tab>washClothes () ;<q><tab>}<q><tab>void cleanHouse () {<q><tab><tab>System.out.println ( " Mop the house . " ) ;<q><tab>}<q><tab>void washDishes () {<q><tab><tab>System.out.println ( " Wash the dishes . " ) ;<q><tab>}<q><tab>abstract void washClothes () ;<q>}<q><q>class WeekendActivities extends DomesticActivities {<q><tab>void cleanHouse () {<q><tab><tab>System.out.println ( " Clean the house and bathrooms . " ) ;<q><tab>}<q><tab>void washDishes () {<q><tab><tab>System.out.println ( " Wash the dishes and the pans " ) ;<q><tab>}<q><tab>void washClothes () {<q><tab><tab>System.out.println ( " Wash used towels . " ) ;<q><tab>}<q><tab>void tidyBackyard () {<q><tab><tab>System.out.println ( " Clean backyard and mow the lawn . " ) ;<q><tab>}<q>}<q><q>class WeeklyActivity extends DomesticActivities {<q><tab>void cleanHouse () {<q><tab><tab>System.out.println ( " Sweep and mop the house . " ) ;<q><tab>}<q><tab>void washDishes () {<q><tab><tab>System.out.println ( " Wash the dishes and tidying up the kitchen " ) ;<q><tab>}<q><tab>void washClothes () {<q><tab><tab>System.out.println ( " Wash clothes and dirty bed linens . " ) ;<q><tab>}<q><tab>void washRug () {<q><tab><tab>System.out.println ( " Wash the living room rug . " ) ;<q><tab>}<q>}',
     title: 'Template Method - Exemplo de código',
-    position: '3',
+    position: '2',
     sublevelId: '5'
   },
   {
     text: 'No exemplo, na classe base abstrata “DomesticActivities”, tem-se o método padrão (“doDailyActivities”), que chama as etapas do algoritmo; método abstrato (“washClothes”), que deve ser implementados por cada subclasse; e métodos que já possuem alguma implementação padrão (“cleanHouse”, “washDishes”), mas ainda podem ser sobrescritos se necessário. Além de sobrescrever alguns métodos, as subclasses ainda implementam métodos próprios, como “tidyBackyard” e “washRug”.',
     title: 'Template Method - Exemplo de código',
-    position: '4',
+    position: '3',
     sublevelId: '5'
   },
   {
-    text: '<t>Quando quer deixar os clientes estender apenas etapas particulares de um algoritmo, mas não todo o algoritmo e sua estrutura, e<t>Quando se têm várias classes que contém algoritmos quase idênticos com algumas diferenças menores. Como resultado, pode querer modificar todas as classes quando o algoritmo muda.',
+    text: '<t>Quando quer deixar os clientes estender apenas etapas particulares de um algoritmo, mas não todo o algoritmo e sua estrutura, e<q><t>Quando se têm várias classes que contém algoritmos quase idênticos com algumas diferenças menores. Como resultado, pode querer modificar todas as classes quando o algoritmo muda.',
     title: 'Template Method - Aplicabilidade',
-    position: '5',
+    position: '4',
     sublevelId: '5'
   },
 
@@ -168,52 +126,40 @@ const contents = [
     sublevelId: '6'
   },
   {
-    text: '<t>quando não souber de antemão os tipos e dependências exatas dos objetos com os quais seu código deve funcionar;<t>quando desejar fornecer aos usuários da biblioteca ou framework uma maneira de estender seus componentes internos, e<t>quando desejar economizar recursos do sistema reutilizando objetos existentes em vez de recriá-los sempre.',
+    text: '<t>quando não souber de antemão os tipos e dependências exatas dos objetos com os quais seu código deve funcionar;<q><t>quando desejar fornecer aos usuários da biblioteca ou framework uma maneira de estender seus componentes internos, e<q><t>quando desejar economizar recursos do sistema reutilizando objetos existentes em vez de recriá-los sempre.',
     title: 'Factory Method - Aplicabilidade',
     position: '4',
     sublevelId: '6'
   },
 
   {
-    text: 'É um padrão estrutural que converte a interface de uma classe em outra interface, permitindo objetos com interfaces incompatíveis colaborarem entre si.<q><q>O adaptador é um objeto que converte por exemplo a interface de um objeto para que outro objeto possa entendê-lo. O adaptador encobre a complexidade da conversão.',
+    text: 'É um padrão estrutural que converte a interface de uma classe em outra interface, permitindo objetos com interfaces incompatíveis colaborarem entre si.<q><q>O adaptador é um objeto que converte por exemplo a interface de um objeto para que outro objeto possa entendê-lo. O adaptador encobre a complexidade da conversão.<q><q>Suponha-se a comunicação entre dois objetos. Com esse padrão de projeto Adapter, um objeto existente chama os métodos do adaptador de acordo com a interface. Ao receber a chamada, o adaptador repassa a chamada para o segundo objeto, em um formato e uma ordem que o segundo objeto espera.<q><q>Também é possível desenvolver um adaptador de duas vias, que pode adaptar as chamadas nos dois sentidos, do objeto 1 para o objeto 2 e vice versa.',
     title: 'Adapter',
     position: '1',
     sublevelId: '7'
   },
   {
-    text: 'Suponha-se a comunicação entre dois objetos. Com esse padrão de projeto Adapter, um objeto existente chama os métodos do adaptador de acordo com a interface. Ao receber a chamada, o adaptador repassa a chamada para o segundo objeto, em um formato e uma ordem que o segundo objeto espera.<q><q>Também é possível desenvolver um adaptador de duas vias, que pode adaptar as chamadas nos dois sentidos, do objeto 1 para o objeto 2 e vice versa.',
-    title: 'Adapter',
+    text: 'public class Client {<q>}<q><q>public class Target {<q><tab>public void method(data) {<q><tab>}<q>}<q><q>public class Adaptee {<q><tab>public void utilMethod(specialData) {<q><tab>}<q>}<q><q>public class Adapter extends Target {<q><tab>private Adaptee adaptee<q><q><tab>public void method(data) {<q><tab><tab>specialData = convertToAdapteeFormat(data);<q>return adaptee.utilMethod(specialData);<q><tab>}<q>}',
+    title: 'Adapter - Exemplo de código',
     position: '2',
     sublevelId: '7'
   },
   {
-    text: 'public class Client {<q>}<q><q>public class Target {<q><tab>public void method(data) {<q><tab>}<q>}<q><q>public class Adaptee {<q><tab>public void utilMethod(specialData) {<q><tab>}<q>}<q><q>public class Adapter extends Target {<q><tab>private Adaptee adaptee<q><q><tab>public void method(data) {<q><tab><tab>specialData = convertToAdapteeFormat(data);<q>return adaptee.utilMethod(specialData);<q><tab>}<q>}',
+    text: ' Cliente é uma classe que contém a lógica de negócio do programa existente.<q><q>A classe Target é a interface do cliente, que descreve um protocolo que outras classes devem seguir para ser capaz de colaborar com o código cliente.<q><q>A classe Adaptee é alguma classe útil (talvez de terceiros ou um código legado), a qual o cliente não pode usar diretamente porque ela tem uma interface incompatível.<q><q>O Adapter é uma classe que é capaz de trabalhar tanto com o cliente quanto a classe Adaptee: ela implementa a interface do cliente enquanto encobre o objeto da classe Adaptee. O adaptador recebe chamadas do cliente através da interface do cliente (Target) e as traduz em chamadas para o objeto encoberto do Adaptee em um formato que ele possa entender.<q><q>O código cliente não é acoplado à classe concreta do adaptador desde que ele trabalhe com o adaptador através da interface do cliente. Graças a isso, pode-se introduzir novos tipos de adaptadores no programa sem quebrar o código cliente existente. Isso pode ser útil quando a interface de uma classe de serviço é mudada ou substituída: você pode apenas criar uma nova classe adaptador sem mudar o código cliente.',
     title: 'Adapter - Exemplo de código',
     position: '3',
     sublevelId: '7'
   },
   {
-    text: ' Cliente é uma classe que contém a lógica de negócio do programa existente.<q><q>A Interface do Cliente descreve um protocolo que outras classes devem seguir para ser capaz de colaborar com o código cliente.<q><q>O Serviço é alguma classe útil (geralmente de terceiros ou código legado). O cliente não pode usar essa classe diretamente porque ela tem uma interface incompatível.',
-    title: 'Adapter - Exemplo de código',
+    text: 'A implementação de um adaptador de classe utiliza herança, onde o adaptador herda interfaces de ambos os objetos ao mesmo tempo.<q><q>A Classe Adaptador não precisa encobrir quaisquer objetos, porque ela herda os comportamentos tanto do cliente como do serviço. A adaptação acontece dentro dos métodos sobrescritos. O adaptador resultante pode ser usado em lugar de uma classe cliente existente.',
+    title: 'Adapter - Adaptador de classe',
     position: '4',
     sublevelId: '7'
   },
   {
-    text: 'O Adaptador é uma classe que é capaz de trabalhar tanto com o cliente quanto o serviço: ela implementa a interface do cliente enquanto encobre o objeto do serviço. O adaptador recebe chamadas do cliente através da interface do cliente e as traduz em chamadas para o objeto encobrido do serviço em um formato que ele possa entender.<q><q>O código cliente não é acoplado à classe concreta do adaptador desde que ele trabalhe com o adaptador através da interface do cliente. Graças a isso, pode-se introduzir novos tipos de adaptadores no programa sem quebrar o código cliente existente. Isso pode ser útil quando a interface de uma classe de serviço é mudada ou substituída: você pode apenas criar uma nova classe adaptador sem mudar o código cliente.',
-    title: 'Adapter - Exemplo de código',
-    position: '5',
-    sublevelId: '7'
-  },
-  {
-    text: 'A implementação de um adaptador de classe utiliza herança, onde o adaptador herda interfaces de ambos os objetos ao mesmo tempo.<q><q>A Classe Adaptador não precisa encobrir quaisquer objetos, porque ela herda os comportamentos tanto do cliente como do serviço. A adaptação acontece dentro dos métodos sobrescritos. O adaptador resultante pode ser usado em lugar de uma classe cliente existente.',
-    title: 'Adapter - Adaptador de classe',
-    position: '6',
-    sublevelId: '7'
-  },
-  {
-    text: '<t>quando quiser utilizar uma classe existente, mas sua interface não for compatível com o resto do código, e<t>quando quer reutilizar diversas subclasses existentes que não possuam alguma funcionalidade comum, a qual, portanto, não pode ser adicionada à superclasse.',
+    text: '<t>quando quiser utilizar uma classe existente, mas sua interface não for compatível com o resto do código, e<q><t>quando quer reutilizar diversas subclasses existentes que não possuam alguma funcionalidade comum, a qual, portanto, não pode ser adicionada à superclasse.',
     title: 'Adapter - Aplicabilidade',
-    position: '7',
+    position: '5',
     sublevelId: '7'
   },
 ]

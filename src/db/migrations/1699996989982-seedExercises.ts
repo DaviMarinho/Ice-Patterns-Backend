@@ -26,7 +26,7 @@ const exercises = [
   {
     id: '4',
     type: ExerciseType.MULTIPLE_CHOICE,
-    question: 'Sobre padrões de projeto, assinale a sequência que corresponde às afirmativas a seguir, sendo V para verdadeira e F para falsa: Os padrões de projeto foram criados pelo Gang of Four; O uso dos padrões em qualquer projeto de software garante a redução de código duplicado e aumenta a reutilização de código; Alguns elementos comumente utilizados para descrever cada padrão de projeto são: nome, propósito, estrutura e aplicabilidade.',
+    question: 'Sobre padrões de projeto, assinale a sequência que corresponde às afirmativas a seguir, sendo V para verdadeira e F para falsa: <q><t>Os padrões de projeto foram criados pelo Gang of Four; <t>O uso dos padrões em qualquer projeto de software garante a redução de código duplicado e aumenta a reutilização de código; <t>Alguns elementos comumente utilizados para descrever cada padrão de projeto são: nome, propósito, estrutura e aplicabilidade.',
     orderKey: '4',
     sublevelId: '1'
   },
@@ -169,7 +169,7 @@ const exercises = [
   {
     id: '24',
     type: ExerciseType.MULTIPLE_CHOICE,
-    question: 'Qual alternativa apresenta a sequência correta sobre as afirmativas a seguir, sendo V para verdadeira e F para falsa?<t>Template Method tem por objetivo definir o esqueleto de um algoritmo em uma operação, postergando a definição de alguns passos para subclasses.<t>O padrão de projeto Facade garante que determinada classe só seja instanciada uma única vez, e estabelece um ponto de acesso global a ela.<t>O padrão de projeto Singleton fornece um ponto por meio do qual um objeto controla o acesso a outro e as mudanças ao objeto instanciado acontecem no momento de execução ou interrupção.<t>O padrão Adapter converte a interface de uma classe em outra interface, permitindo objetos com interfaces incompatíveis colaborarem entre si.',
+    question: 'Qual alternativa apresenta a sequência correta sobre as afirmativas a seguir, sendo V para verdadeira e F para falsa?<q><t>Template Method tem por objetivo definir o esqueleto de um algoritmo em uma operação, postergando a definição de alguns passos para subclasses.<q><t>O padrão de projeto Facade garante que determinada classe só seja instanciada uma única vez, e estabelece um ponto de acesso global a ela.<q><t>O padrão de projeto Singleton fornece um ponto por meio do qual um objeto controla o acesso a outro e as mudanças ao objeto instanciado acontecem no momento de execução ou interrupção.<q><t>O padrão Adapter converte a interface de uma classe em outra interface, permitindo objetos com interfaces incompatíveis colaborarem entre si.',
     orderKey: '2',
     sublevelId: '8'
   },
