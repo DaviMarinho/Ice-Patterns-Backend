@@ -199,7 +199,7 @@ export async function checkNumberOfSolvedExercises(username: string, userExercis
             }
           }
           // send socket data
-          socketIO.to(username).emit('missao')
+          socketIO.to(username).emit('missao', {cubeReward: 15})
         } else {
           switch (numOfExercises) {
             case 1:
@@ -290,7 +290,7 @@ export async function checkMissionDesafio(username: string, exampleExerciseId: s
           }
         }
 
-        socketIO.to('user.username').emit('missao')
+        socketIO.to('user.username').emit('missao', {cubeReward: 20})
   
         return {
           isSuccess: true,
