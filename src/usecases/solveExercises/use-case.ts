@@ -179,11 +179,11 @@ export async function checkNumberOfSolvedExercises(username: string, userExercis
         }
     }
 
-      const missionId = '1'
-      let progress = 0
-      let updatedMission = null
+    const missionId = '1'
+    let progress = 0
+    let updatedMission = null
 
-      const numOfExercises = userExercises.length
+    const numOfExercises = userExercises.length
       if (numOfExercises <= 5) {
 
         if (numOfExercises == 5) {
@@ -198,7 +198,7 @@ export async function checkNumberOfSolvedExercises(username: string, userExercis
             }
           }
           // send socket data
-          // socketIO.to('user.username').emit('missao', '1')
+          // socketIO.to(username).emit('missao', '1')
         } else {
           switch (numOfExercises) {
             case 1:
@@ -236,6 +236,10 @@ export async function checkNumberOfSolvedExercises(username: string, userExercis
           isSuccess: true,
         }
 
+      }
+
+      return {
+        isSuccess: true,
       }
   } catch (error) {
     return {

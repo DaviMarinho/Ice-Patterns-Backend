@@ -168,7 +168,9 @@ export async function checkBoosterMission(username: string, userMissionRepositor
           }
         }
       }
-      return
+      return {
+        isSuccess: true,
+      }
     }
   } catch (error) {
     return {
