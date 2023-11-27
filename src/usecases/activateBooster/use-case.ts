@@ -71,17 +71,13 @@ export class ActivateBoosterUseCase implements UseCase<ActivateBoosterResponse> 
             }
           }
 
-          const response = checkBoosterMission(payload.username, this.userMissionRepository)
-
-          response.then(result => {
-            socketIO.to(payload.username).emit('missao')
-          }).catch(e => {
-            return { 
-              isSuccess: false, 
-              error: e
+          const response = await checkBoosterMission(payload.username, this.userMissionRepository)
+          if (!response?.isSuccess) {
+            return {
+              isSuccess: false,
+              error: new CheckMissionError()
             }
           }
-          )
 
         return { 
             isSuccess: true, 
@@ -167,6 +163,7 @@ export async function checkBoosterMission(username: string, userMissionRepositor
             error: new CheckMissionError()
           }
         }
+        socketIO.to(username).emit('missao')
       }
       return {
         isSuccess: true,
