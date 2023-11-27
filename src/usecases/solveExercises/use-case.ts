@@ -10,6 +10,7 @@ import { UseCase, UseCaseReponse } from '../domain/use-case'
 import { UserExercise } from '../../db/entities/userExercise'
 import { UserMissionsRepository } from '../../repository/port/userMission-repository'
 import { CheckMissionError } from './errors/checkMission-error'
+import { socketIO } from '../../main'
 
 type response = {
   isSuccess: boolean,
@@ -198,7 +199,7 @@ export async function checkNumberOfSolvedExercises(username: string, userExercis
             }
           }
           // send socket data
-          // socketIO.to(username).emit('missao', '1')
+          socketIO.to(username).emit('missao')
         } else {
           switch (numOfExercises) {
             case 1:
@@ -289,7 +290,7 @@ export async function checkMissionDesafio(username: string, exampleExerciseId: s
           }
         }
 
-        // socketIO.to('user.username').emit('missao', '3')
+        socketIO.to('user.username').emit('missao')
   
         return {
           isSuccess: true,

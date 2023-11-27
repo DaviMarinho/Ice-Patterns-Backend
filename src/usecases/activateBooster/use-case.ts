@@ -9,7 +9,7 @@ import { UseCase, UseCaseReponse } from '../domain/use-case'
 import { NotEnoughBoosterError } from './errors/notEnoughBooster-error'
 import { CheckMissionError } from '../solveExercises/errors/checkMission-error'
 import { UserMissionsRepository } from '../../repository/port/userMission-repository'
-import { UserMission } from '../../db/entities/userMission'
+import { socketIO } from '../../main'
 
 type response = {
   isSuccess: boolean,
@@ -74,7 +74,7 @@ export class ActivateBoosterUseCase implements UseCase<ActivateBoosterResponse> 
           const response = checkBoosterMission(payload.username, this.userMissionRepository)
 
           response.then(result => {
-            // socketIO.to('user.username').emit('missao', '2')
+            socketIO.to(payload.username).emit('missao')
           }).catch(e => {
             return { 
               isSuccess: false, 
@@ -128,7 +128,7 @@ export async function startBoosterCountDown(duration: number, username: string, 
         }
       }
     // enviar um socket emit pro front
-    // socketIO.to('user.username').emit('booster desativar')
+    socketIO.to(username).emit('booster desativar')
 }
 
 function countdownTimer(duration: number): Promise<void> {
