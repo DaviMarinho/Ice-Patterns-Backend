@@ -216,13 +216,13 @@ const alternatives = [
     num: '2',
     exerciseId: '13',
     text: 'Estrutural, que define como montar objetos e classes em estruturas maiores, ou',
-    isAnswer: true
+    isAnswer: false
   },
   {
     num: '3',
     exerciseId: '13',
     text: 'Comportamental, que cuida da comunicação eficiente e da atribuição de responsabilidade entre objetos, tornando a implementação de comportamentos complexos mais gerenciável e modular.',
-    isAnswer: false
+    isAnswer: true
   },
   {
     num: '1',
