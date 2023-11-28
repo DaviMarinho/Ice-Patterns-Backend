@@ -27,7 +27,7 @@ app.use('/icepatterns', routes)
 const serverHttp = createServer(app)
 const socketIO = new Server(serverHttp, {
   cors: {
-    origin: "http://localhost:3000"
+    origin: "https://icepatterns.netlify.app/"
   }
 })
 
