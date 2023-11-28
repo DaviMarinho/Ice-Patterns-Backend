@@ -14,7 +14,7 @@ const missions = [
   {
     id: '2',
     name: 'ativar booster',
-    description: 'Ative e utilize um booster',
+    description: 'Ative e utilize um impulsionador',
     rewardBooster: '0',
     rewardEnergy: '0',
     rewardCube: '150',
