@@ -163,7 +163,7 @@ export async function checkBoosterMission(username: string, userMissionRepositor
             error: new CheckMissionError()
           }
         }
-        socketIO.to(username).emit('missao', {cubeReward: 25})
+        socketIO.to(username).emit('missao', {cubeReward: 150})
       }
       return {
         isSuccess: true,

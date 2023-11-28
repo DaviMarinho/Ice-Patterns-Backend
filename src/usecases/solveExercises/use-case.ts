@@ -210,7 +210,7 @@ export async function checkFirstExerciseBattery(username: string, exercises: Exe
               error: new CheckMissionError()
             }
           }
-          socketIO.to(username).emit('missao', {cubeReward: 15})
+          socketIO.to(username).emit('missao', {cubeReward: 100})
           return {
             isSuccess: true,
           }
@@ -354,7 +354,7 @@ export async function checkMissionDesafio(username: string, exampleExerciseId: s
           }
         }
 
-        socketIO.to('user.username').emit('missao', {cubeReward: 20})
+        socketIO.to('user.username').emit('missao', {cubeReward: 120})
   
         return {
           isSuccess: true,

@@ -6,8 +6,8 @@ const missions = [
     name: 'Primeira bateria de exercícios',
     description: 'Complete sua primeira bateria de exercícios com mais de 60% de acerto',
     rewardBooster: '0',
-    rewardEnergy: '1',
-    rewardCube: '10',
+    rewardEnergy: '0',
+    rewardCube: '100',
     rewardXp: '0',
     unlocksOnLevel: '1',
   },
@@ -17,7 +17,7 @@ const missions = [
     description: 'Ative e utilize um booster',
     rewardBooster: '0',
     rewardEnergy: '0',
-    rewardCube: '5',
+    rewardCube: '150',
     rewardXp: '0',
     unlocksOnLevel: '2',
   },
@@ -26,10 +26,10 @@ const missions = [
     name: 'completar desafio',
     description: 'Complete um desafio com sucesso',
     rewardBooster: '0',
-    rewardEnergy: '1',
-    rewardCube: '15',
+    rewardEnergy: '0',
+    rewardCube: '120',
     rewardXp: '0',
-    unlocksOnLevel: '2',
+    unlocksOnLevel: '3',
   },
   {
     id: '4',
@@ -39,7 +39,7 @@ const missions = [
     rewardEnergy: '0',
     rewardCube: '8',
     rewardXp: '0',
-    unlocksOnLevel: '5',
+    unlocksOnLevel: '7',
   }
 ]
 
