@@ -37,7 +37,7 @@ import { UserExercise } from './userExercise'
     @Column({ default: 0 })
     qtBooster: number
 
-    @Column({ default: 0 })
+    @Column({ default: 5 })
     qtEnergy: number
 
     @Column({ default: 0 })
