@@ -68,6 +68,11 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
             } else {
                 nextNumSublevel = numSublevel + 1
                 nextNumLevel = numLevel
+
+                if (numSublevel == 3) {
+                  // Desbloqueia desafio
+                  socketIO.to(payload.username).emit('desafio')
+                }
             }
 
             let nextSublevelFound = null
@@ -127,6 +132,10 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
               }
 
 
+            }
+
+            if (missionsUnlocked.length > 0) {
+              socketIO.to(payload.username).emit('missao nova')
             }
 
             return { 
