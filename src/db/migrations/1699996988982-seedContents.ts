@@ -27,7 +27,7 @@ const contents = [
   },
 
   {
-    text: 'É um padrão criacional que, de acordo com Gamma et al, é usado para “garantir que uma classe tenha somente uma instância, fornecendo um ponto global de acesso para a mesma”.<q><q>O Singleton resolve essencialmente dois problemas:<q><t>Garantir que uma classe tenha somente uma instância: cria-se um objeto, e depois decidiu-se criar um novo. Porém, ao invés de receber um novo objeto, receberá o objeto que já foi criado anteriormente<q><t>Fornecer um ponto global de acesso à instância: assim como uma variável global, o padrão Singleton permite que você acesse algum objeto de qualquer lugar no programa. Contudo, ele também protege aquela instância de ser sobrescrita por outro código',
+    text: 'É um padrão criacional que, de acordo com Gamma et al (1995), é usado para “garantir que uma classe tenha somente uma instância, fornecendo um ponto global de acesso para a mesma”.<q><q>O Singleton resolve essencialmente dois problemas:<q><t>Garantir que uma classe tenha somente uma instância: cria-se um objeto, e depois decidiu-se criar um novo. Porém, ao invés de receber um novo objeto, receberá o objeto que já foi criado anteriormente<q><t>Fornecer um ponto global de acesso à instância: assim como uma variável global, o padrão Singleton permite que você acesse algum objeto de qualquer lugar no programa. Contudo, ele também protege aquela instância de ser sobrescrita por outro código',
     title: 'Singleton',
     position: '1',
     sublevelId: '2'
@@ -39,7 +39,7 @@ const contents = [
     sublevelId: '2'
   },
   {
-    text: 'O construtor privado garante que nenhuma outra classe o sistema consiga instanciar a classe do Singleton, fazendo com que nenhuma outra classe crie várias instâncias dessa mesma classe<q><q>O método de acesso público garante que exista apenas um ponto de acesso global para essa classe. É a partir desse método que a lógica do Singleton funciona, pois assim apenas uma instância dessa classe será retornada para o sistema.<q><q>O atributo estático garante que não seja possível criar uma classe fora da lógica do Singleton, fazendo com que seja preciso acessar o método estático getInstance(), o qual retorna esse atributo estático.',
+    text: 'O construtor privado garante que nenhuma outra classe do sistema consiga instanciar a classe do Singleton, fazendo com que nenhuma outra classe crie várias instâncias dessa mesma classe<q><q>O método de acesso público garante que exista apenas um ponto de acesso global para essa classe. É a partir desse método que a lógica do Singleton funciona, pois assim apenas uma instância dessa classe será retornada para o sistema.<q><q>O atributo estático garante que não seja possível criar uma classe fora da lógica do Singleton, fazendo com que seja preciso acessar o método estático getInstance(), o qual retorna esse atributo estático.',
     title: 'Singleton - Exemplo de código',
     position: '3',
     sublevelId: '2'
@@ -52,7 +52,7 @@ const contents = [
   },
 
   {
-    text: 'É um padrão estrutural, que fornece uma interface simplificada para uma biblioteca, um framework ou qualquer conjunto complexo de classes.<q><q>De acordo com Gamma et al, o Façade “fornece uma interface unificada para um conjunto de interfaces em um subsistema. Façade define uma interface de nível mais alto que torna o subsistema mais fácil de ser usado.”<q><q>Ter uma fachada (o facade) é útil quando precisa-se integrar a aplicação com uma biblioteca mais complexa, com muitas funcionalidades. Dessa forma, a fachada poderia fornecer convenientemente o acesso a uma funcionalidade específica do subsistema (biblioteca). Ao final, ao invés da aplicação se comunicar diretamente com os objetos do subsistema diretamente, ela é utilizada através da fachada.',
+    text: 'É um padrão estrutural, que fornece uma interface simplificada para uma biblioteca, um framework ou qualquer conjunto complexo de classes.<q><q>De acordo com Gamma et al (1995), o Facade “fornece uma interface unificada para um conjunto de interfaces em um subsistema. Facade define uma interface de nível mais alto que torna o subsistema mais fácil de ser usado.”<q><q>Ter uma fachada (o facade) é útil quando precisa-se integrar a aplicação com uma biblioteca mais complexa, com muitas funcionalidades. Dessa forma, a fachada poderia fornecer convenientemente o acesso a uma funcionalidade específica do subsistema (biblioteca). Ao final, ao invés da aplicação se comunicar diretamente com os objetos do subsistema diretamente, ela é utilizada através da fachada.',
     title: 'Facade',
     position: '1',
     sublevelId: '3'
@@ -108,7 +108,7 @@ const contents = [
   },
 
   {
-    text: 'É um padrão criacional que, de acordo com Gamma et al, define uma interface para criar um objeto, mas deixar as subclasses decidirem qual classe instanciar. Permite adiar a instanciação para subclasse.<q><q>O padrão Factory Method traz a ideia de substituir chamadas diretas de construção de objetos, por chamadas para um método “factory” especial.',
+    text: 'É um padrão criacional que, de acordo com Gamma et al (1995), define uma interface para criar um objeto, mas deixar as subclasses decidirem qual classe instanciar. Permite adiar a instanciação para subclasse.<q><q>O padrão Factory Method traz a ideia de substituir chamadas diretas de construção de objetos, por chamadas para um método “factory” especial.',
     title: 'Factory Method',
     position: '1',
     sublevelId: '6'
