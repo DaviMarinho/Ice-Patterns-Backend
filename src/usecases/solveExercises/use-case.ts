@@ -354,7 +354,7 @@ export async function checkMissionDesafio(username: string, exampleExerciseId: s
           }
         }
 
-        socketIO.to('user.username').emit('missao', {cubeReward: 120})
+        socketIO.to(username).emit('missao', {cubeReward: 120})
   
         return {
           isSuccess: true,
