@@ -30,6 +30,19 @@ class UserAchievementRepository implements UserAchievementsRepository {
     }
     return userAchievements
   }
+
+  async findOne(userUsername: string, achievementId: string): Promise<UserAchievement | undefined> {
+    const userAchievement = await this.userAchievementRepository.findOneBy({
+      userUsername,
+      achievementId
+    })
+    if (!userAchievement) {
+      return undefined
+    }
+
+    return userAchievement
+  }
+
 }
 
 export default UserAchievementRepository

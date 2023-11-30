@@ -27,6 +27,8 @@ export type User = {
     boosterActiveDateTime?: Date
 
     boosterDeactiveDateTime?: Date
+
+    boughtFromStore: boolean
   
     createdAt?: Date
   
