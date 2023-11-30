@@ -58,6 +58,9 @@ import { UserExercise } from './userExercise'
     @Column('timestamptz', {nullable: true})
     public boosterDeactiveDateTime?: Date
 
+    @Column({ default: false })
+    boughtFromStore: boolean
+
     @OneToMany(() => UserAchievement, userAchievement => userAchievement.user)
     public userAchievements?: UserAchievement[];
 

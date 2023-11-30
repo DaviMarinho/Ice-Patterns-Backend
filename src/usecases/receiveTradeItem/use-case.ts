@@ -6,10 +6,13 @@ import { UpdateUserItemsError } from './errors/update-user-items-error'
 import { OperationError } from './errors/operation-error'
 import { UseCase, UseCaseReponse } from '../domain/use-case'
 import { QtError } from './errors/qt-error'
-
+import { UserAchievementsRepository } from '../../repository/port/userAchievement-repository'
+import { ReceiveAchievementError } from '../receiveAchievement/errors/receiveAchievement-error'
+import { socketIO } from '../../main'
 export class ReceiveTradeItemUseCase implements UseCase<ReceiveTradeItemResponse> {
   constructor(
-    private userRepository: Repository
+    private userRepository: Repository,
+    private userAchievementRepository: UserAchievementsRepository
   ) {}
 
   async execute(
@@ -94,6 +97,26 @@ export class ReceiveTradeItemUseCase implements UseCase<ReceiveTradeItemResponse
           return {
             isSuccess: false,
             error: new UpdateUserItemsError()
+          }
+        }
+
+        if (payload.isBuying) {
+          const userAchievement = await this.userAchievementRepository.findOne(payload.username, '2')
+          if (!userAchievement) {
+            // Update user boughtFromStore
+            const updateResult = await this.userRepository.buyFromStore(
+              payload.username,
+              true
+            )
+    
+            if (!updateResult) {
+              return {
+                isSuccess: false,
+                error: new ReceiveAchievementError()
+              }
+            }
+
+            socketIO.to(userFound.username).emit('conquista', '2')
           }
         }
 

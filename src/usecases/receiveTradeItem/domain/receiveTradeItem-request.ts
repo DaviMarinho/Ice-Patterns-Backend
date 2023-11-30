@@ -4,5 +4,6 @@ export interface ReceiveTradeItemRequest {
     qtEnergy?: number
     qtBooster?: number
     isReceiving: boolean
+    isBuying: boolean
 }
   

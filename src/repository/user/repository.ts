@@ -130,6 +130,16 @@ class UserRepository implements Repository {
     return users
   }
 
+  async buyFromStore(username: string, boughtFromStore: boolean): Promise<UpdateResult | undefined> {
+    const result = await this.userRepository.update({
+      username,
+    }, {
+      boughtFromStore,
+    })
+
+    return result
+  }
+
 
 }
 
