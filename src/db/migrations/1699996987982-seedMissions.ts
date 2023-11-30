@@ -31,16 +31,16 @@ const missions = [
     rewardXp: '0',
     unlocksOnLevel: '3',
   },
-  {
-    id: '4',
-    name: 'completar 2 exercicios com mais de 90% de acerto',
-    description: 'Complete duas baterias de exercícios com mais de 90% de acerto',
-    rewardBooster: '0',
-    rewardEnergy: '0',
-    rewardCube: '8',
-    rewardXp: '0',
-    unlocksOnLevel: '7',
-  }
+  // {
+  //   id: '4',
+  //   name: 'completar 2 exercicios com mais de 90% de acerto',
+  //   description: 'Complete duas baterias de exercícios com mais de 90% de acerto',
+  //   rewardBooster: '0',
+  //   rewardEnergy: '0',
+  //   rewardCube: '8',
+  //   rewardXp: '0',
+  //   unlocksOnLevel: '7',
+  // }
 ]
 
 export class seedMissions1699996987982 implements MigrationInterface {
