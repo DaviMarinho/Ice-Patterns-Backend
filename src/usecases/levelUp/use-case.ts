@@ -54,13 +54,19 @@ export class LevelUpUseCase implements UseCase<LevelUpResponse> {
         } else {
             if (numSublevel == 4) {
 
-                // ACHIEVEMENTs
-                if (numLevel == 1) {
-                  socketIO.to(userFound.username).emit('conquista', '1')
-                }
-                if (numLevel == 2) {
-                  socketIO.to(userFound.username).emit('conquista', '5')
-                }
+              // ACHIEVEMENTs
+              if (numLevel == 1) {
+                socketIO.to(userFound.username).emit('conquista', '1')
+                if (userFound.boosterActive) {
+                  socketIO.to(userFound.username).emit('conquista', '4')
+                } 
+              }
+              if (numLevel == 2) {
+                socketIO.to(userFound.username).emit('conquista', '5')
+                if (userFound.boosterActive) {
+                  socketIO.to(userFound.username).emit('conquista', '4')
+                } 
+              }
 
                 nextNumLevel = numLevel + 1
                 nextNumSublevel = 1
