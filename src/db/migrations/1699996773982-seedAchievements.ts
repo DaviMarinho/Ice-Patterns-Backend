@@ -13,13 +13,13 @@ const achievements = [
   },
   {
     id: '3',
-    name: '100% na primeira prática',
-    description: 'Você acertou todas as questões na sua primeiríssima prática!'
+    name: 'Mais de 1000 cubos',
+    description: 'Você acumulou mais de 1.000 cubos!'
   },
   {
     id: '4',
-    name: 'Primeira prática com 100%',
-    description: 'É a primeira vez que você acertou 100% dos exercícios! Parabéns!'
+    name: 'Subir de nível impulsionado',
+    description: 'Você subiu de nível estando impulsionado!'
   },
   {
     id: '5',
