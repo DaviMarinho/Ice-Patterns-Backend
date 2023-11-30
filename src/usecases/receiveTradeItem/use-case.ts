@@ -85,6 +85,9 @@ export class ReceiveTradeItemUseCase implements UseCase<ReceiveTradeItemResponse
           }
         }
       
+        if (payload.isReceiving && newQtCube > 1000) {
+          socketIO.to(userFound.username).emit('conquista', '3')
+        }
 
         const updateResult = await this.userRepository.updateUserItemQuantity(
           payload.username,
